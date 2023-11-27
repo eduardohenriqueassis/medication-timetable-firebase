@@ -1,0 +1,29 @@
+.registerForm {
+  max-width: 30rem;
+}
+
+.registerForm button {
+  margin-top: 3rem;
+}
+.registerForm p {
+  margin-top: 0.5rem;
+}
+.registerForm p a {
+  position: relative;
+  color: var(--hover-blue);
+  font-weight: bold;
+}
+.registerForm a::after {
+  content: "";
+  display: block;
+  background: var(--hover-blue);
+  height: 2px;
+  width: 2.75rem;
+  position: absolute;
+  right: 0px;
+}
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

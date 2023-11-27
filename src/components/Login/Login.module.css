@@ -1,0 +1,36 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  min-height: calc(100vh - 12rem);
+  max-width: 30rem;
+}
+
+.loginForm button {
+  margin-top: 3rem;
+}
+.loginForm p {
+  margin-top: 0.5rem;
+}
+.loginForm p a {
+  position: relative;
+  color: var(--hover-blue);
+  font-weight: bold;
+}
+.createAccount::after,
+.forgot::after {
+  content: "";
+  display: block;
+  background: var(--hover-blue);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  right: 0px;
+}
+
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
