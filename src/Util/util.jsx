@@ -28,15 +28,36 @@ export const types = {
   name: {
     message: "Preencha seu nome.",
   },
+  confirm: {
+    message: "As senhas não conferem.",
+  },
 };
 
 export const Utils = (fieldType) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [passwordCheck, setPasswordCheck] = React.useState("");
 
   function onBlur({ currentTarget }) {
+    localStorage.setItem("password", "");
+    if (fieldType === "password") {
+      if (currentTarget.value.length < 6) {
+        setError(types[fieldType].message);
+        return;
+      } else {
+        localStorage.setItem("password", currentTarget.value);
+      }
+    }
+
+    if (fieldType === "confirm") {
+      let pass = localStorage.getItem("password");
+      currentTarget.value === pass
+        ? setError(null)
+        : setError(types[fieldType].message);
+      return;
+    }
     const message = types[fieldType].message;
-    if (currentTarget.value.length === 0) setError(message);
+    if (currentTarget.value.length === 0) setError("Preencha um valor");
     if (
       fieldType === "email" &&
       !types[fieldType].regex.test(currentTarget.value)
