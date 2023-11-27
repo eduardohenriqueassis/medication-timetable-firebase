@@ -67,7 +67,7 @@ export const useAuthentication = () => {
       if (
         error.message.includes("user-not-found") ||
         error.message.includes("wrong-password") ||
-        error.message.includes("auth/invalid-login-credentials")
+        error.message.includes("auth/invalid")
       ) {
         sysErrMessage = "Usuário ou senha não conferem";
       } else {

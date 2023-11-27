@@ -3,49 +3,30 @@ import styles from "./Login.module.css";
 import Input from "../../Elements/Input/Input";
 import Button from "../../Elements/Button/Button";
 import { NavLink } from "react-router-dom";
-import { utils, types, checkInputValidity } from "./../../Util/util.jsx";
+import { Utils } from "./../../Util/util.jsx";
 import { useAuthentication } from "../../Hooks/useAuthentication.jsx";
 
 const Login = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [errType, setErrType] = React.useState("");
+
+  const checkEmail = Utils("email");
+  const checkPassword = Utils("password");
   const { login, error: authError, loading } = useAuthentication();
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError(null);
     const user = {
-      email,
-      password,
+      email: checkEmail.value,
+      password: checkPassword.value,
     };
 
     await login(user);
   }
 
-  function checkInputValidity(e, errType) {
-    const value = e.target.value;
-    if (errType === "email" && !types.email.regex.test(value)) {
-      setError(types.email.message);
-      setErrType(errType);
-      return;
-    } else {
-      setError("");
-      setErrType("");
-    }
-    if (value.length > 0) {
-      setError(null);
-    } else {
-      setError(utils[errType]);
-      setErrType(errType);
-    }
-  }
-
   React.useEffect(() => {
     if (authError) {
       setError(authError);
-      setErrType("auth");
     }
   }, [authError]);
   return (
@@ -56,27 +37,19 @@ const Login = () => {
           label="Email:"
           type="email"
           placeholder="Insira seu e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={(e) => checkInputValidity(e, "email")}
-          error={errType === "email" && error ? error : null}
+          {...checkEmail}
         />
         <Input
           label="Senha:"
           type="password"
           placeholder="Insira sua senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onBlur={(e) => checkInputValidity(e, "passwordLogin")}
-          error={errType === "passwordLogin" && error ? error : null}
+          {...checkPassword}
         />
         <p>
           <NavLink className={styles.forgot} to="/resetPassword">
             Esqueceu a senha?
           </NavLink>
         </p>
-
-        {error && errType === "auth" && <p className={styles.error}>{error}</p>}
 
         {loading ? (
           <Button disabled>Entrando...</Button>
@@ -90,6 +63,7 @@ const Login = () => {
           Cadastre-se
         </NavLink>
       </p>
+      {error && <p className={styles.error}>{error}</p>}
     </section>
   );
 };
