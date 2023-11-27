@@ -58,12 +58,14 @@ const Register = () => {
           type="password"
           placeholder="Crie sua senha"
           {...password}
+          showPasswordIcon={true}
         />
         <Input
           label="Confirme:"
           type="password"
           placeholder="Confirme sua senha"
           {...confirmPassword}
+          showPasswordIcon={true}
         />
         {loading ? (
           <Button disabled>Criando...</Button>

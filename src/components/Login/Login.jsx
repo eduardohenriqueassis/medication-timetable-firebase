@@ -43,6 +43,7 @@ const Login = () => {
           label="Senha:"
           type="password"
           placeholder="Insira sua senha"
+          showPasswordIcon={true}
           {...checkPassword}
         />
         <p>
