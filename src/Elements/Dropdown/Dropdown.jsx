@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Dropdown.module.css";
 
-const Dropdown = ({ label, optionsList, error, value }) => {
+const Dropdown = ({ label, optionsList, error, value, onChange, onBlur }) => {
   let options = optionsList.map((option, index) => (
     <option className={styles.option} key={index + 1} value={option}>
       {option}
@@ -19,6 +19,8 @@ const Dropdown = ({ label, optionsList, error, value }) => {
           className={styles.select}
           label={label}
           id={label}
+          onChange={onChange}
+          onBlur={onBlur}
         >
           {options}
         </select>

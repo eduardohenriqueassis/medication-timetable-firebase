@@ -22,7 +22,7 @@ const Calendar = ({ label, name, value, onChange, error, onBlur }) => {
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        min={today}
+        // min={today}
       ></input>
       {error && <p className={styles.error}>{error}</p>}
     </div>

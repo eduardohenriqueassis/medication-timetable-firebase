@@ -31,16 +31,18 @@ export const types = {
   confirm: {
     message: "As senhas não conferem.",
   },
+  calendar: {
+    message: "Escolha uma data.",
+  },
 };
 
 export const Utils = (fieldType) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [passwordCheck, setPasswordCheck] = React.useState("");
 
   function onBlur({ currentTarget }) {
-    localStorage.setItem("password", "");
     if (fieldType === "password") {
+      localStorage.setItem("password", "");
       if (currentTarget.value.length < 6) {
         setError(types[fieldType].message);
         return;
@@ -56,8 +58,20 @@ export const Utils = (fieldType) => {
         : setError(types[fieldType].message);
       return;
     }
-    const message = types[fieldType].message;
-    if (currentTarget.value.length === 0) setError("Preencha um valor");
+    if (fieldType === "calendar") {
+      currentTarget.value.length === 0
+        ? setError(types[fieldType].message)
+        : setError(null);
+      return;
+    }
+    if (currentTarget.value.length === 0) {
+      setError("Preencha um valor");
+      return;
+    }
+    if (fieldType === "dosage" && currentTarget.value === "0") {
+      setError("Escolha um valor");
+      return;
+    }
     if (
       fieldType === "email" &&
       !types[fieldType].regex.test(currentTarget.value)
@@ -65,12 +79,29 @@ export const Utils = (fieldType) => {
       setError(types[fieldType].message);
       return;
     }
+
+    setStep();
+  }
+
+  function setValueForDosage() {
+    setValue("");
+  }
+
+  function setStep() {
+    if (fieldType === "dosageType") {
+      if (value === "comprimido" || value === "dose") {
+        localStorage.setItem("step", "0.5");
+      } else {
+        localStorage.setItem("step", "1");
+      }
+    }
   }
 
   function onChange({ target }) {
+    const toUpper = fieldType === "medication" || fieldType === "indication";
     setError(false);
-    setValue(target.value);
+    setValue(toUpper ? target.value.toUpperCase() : target.value);
   }
 
-  return { error, onBlur, onChange, value };
+  return { error, onBlur, onChange, value, setValueForDosage, setStep };
 };
