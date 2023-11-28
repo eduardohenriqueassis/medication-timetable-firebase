@@ -5,11 +5,17 @@ import Input from "../../Elements/Input/Input";
 import Dropdown from "../../Elements/Dropdown/Dropdown";
 import Calendar from "../../Elements/Calendar/Calendar";
 import { Utils } from "../../Util/util";
+import { useAuthValue } from "../../context/AuthContext";
 import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicationObj";
+import { useInsertDocument } from "../../Hooks/useInsertDocument";
+import { useNavigate } from "react-router-dom";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
-  const [step, setStep] = React.useState("0.5");
+  const [step, setStep] = React.useState("1");
+  const { insertDocument, response } = useInsertDocument("medications");
+  const { user } = useAuthValue();
+  const navigate = useNavigate();
   const medication = Utils("medication");
   const indication = Utils("indication");
   const dosage = Utils("dosage");
@@ -55,7 +61,12 @@ const AddEditMedication = () => {
         minutes,
       };
       const medicationData = generateProcessedMedicationObj({ ...obj });
-      console.log(medicationData);
+      insertDocument({
+        medicationData,
+        uid: user.uid,
+        createdBy: user.displayName,
+      });
+      navigate("/table");
     } else {
       alert("não");
     }
@@ -189,8 +200,13 @@ const AddEditMedication = () => {
         </div>
 
         <div className={styles.btnWrapper}>
-          <Button>Cadastrar</Button>
+          {response.loading ? (
+            <Button disabled>Cadastrando...</Button>
+          ) : (
+            <Button>Cadastrar Medicamento</Button>
+          )}
         </div>
+        {response.error && <p className={styles.error}>{response.error}</p>}
       </form>
     </section>
   );

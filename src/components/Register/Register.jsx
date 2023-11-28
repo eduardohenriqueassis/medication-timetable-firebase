@@ -30,6 +30,7 @@ const Register = () => {
     // }
 
     await createUser(user);
+    localStorage.removeItem("password");
   }
 
   React.useEffect(() => {
