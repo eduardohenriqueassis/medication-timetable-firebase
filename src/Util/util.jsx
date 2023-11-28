@@ -39,6 +39,7 @@ export const types = {
 export const Utils = (fieldType) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [disabled, setDisabled] = React.useState(false);
 
   function onBlur({ currentTarget }) {
     if (fieldType === "password") {
@@ -79,29 +80,43 @@ export const Utils = (fieldType) => {
       setError(types[fieldType].message);
       return;
     }
-
-    setStep();
   }
 
   function setValueForDosage() {
     setValue("");
-  }
-
-  function setStep() {
-    if (fieldType === "dosageType") {
-      if (value === "comprimido" || value === "dose") {
-        localStorage.setItem("step", "0.5");
-      } else {
-        localStorage.setItem("step", "1");
-      }
-    }
+    setError(null);
   }
 
   function onChange({ target }) {
     const toUpper = fieldType === "medication" || fieldType === "indication";
+    const elementName = target.attributes.label;
+    const inputValue = target.value === "" || target.value === "Hora atual";
     setError(false);
     setValue(toUpper ? target.value.toUpperCase() : target.value);
+    if (elementName && elementName.nodeValue === "Horas *" && inputValue) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
   }
 
-  return { error, onBlur, onChange, value, setValueForDosage, setStep };
+  function setDisabledState(value) {
+    if ((value === "Hora atual" || value === "") && hours) {
+      setDisabled(true);
+      return true;
+    } else {
+      setDisabled(false);
+      return false;
+    }
+  }
+
+  return {
+    error,
+    onBlur,
+    onChange,
+    value,
+    setValueForDosage,
+    setDisabledState: () => setDisabledState(value),
+    disabled,
+  };
 };

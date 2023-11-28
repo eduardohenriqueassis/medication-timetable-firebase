@@ -5,10 +5,11 @@ import Input from "../../Elements/Input/Input";
 import Dropdown from "../../Elements/Dropdown/Dropdown";
 import Calendar from "../../Elements/Calendar/Calendar";
 import { Utils } from "../../Util/util";
-import GenerateProcessedMedicationObj from "../../Hooks/GenerateProcessedMedicationObj";
+import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicationObj";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
+  const [step, setStep] = React.useState("0.5");
   const medication = Utils("medication");
   const indication = Utils("indication");
   const dosage = Utils("dosage");
@@ -40,7 +41,7 @@ const AddEditMedication = () => {
       amountOfDays.value &&
       space.value &&
       hours.value &&
-      minutes.value
+      (minutes.value || hours.disabled)
     ) {
       const obj = {
         medication,
@@ -53,17 +54,23 @@ const AddEditMedication = () => {
         hours,
         minutes,
       };
-      const medicationData = GenerateProcessedMedicationObj({ ...obj });
+      const medicationData = generateProcessedMedicationObj({ ...obj });
+      console.log(medicationData);
     } else {
       alert("não");
     }
   }
-  function setAlert() {
-    if (dosageType.value.length === 0) {
-      dosage.setValueForDosage();
-      alert("Por favor escolha um tipo de medida primeiro.");
-      return;
-    }
+  // function setAlert() {
+  //   if (dosageType.value.length === 0) {
+  //     dosage.setValueForDosage();
+  //     alert("Por favor escolha um tipo de medida primeiro.");
+  //     return;
+  //   }
+  // }
+  function getStep() {
+    if (dosageType.value === "comprimido" || dosageType.value === "dose")
+      setStep("0.5");
+    else setStep("1");
   }
 
   return (
@@ -99,8 +106,8 @@ const AddEditMedication = () => {
                 type="number"
                 min="0"
                 {...dosage}
-                step={localStorage.getItem("step")}
-                onClick={setAlert}
+                step={step}
+                onSelect={getStep}
               />
             </div>
             <div className={styles.amountTypeWrapper}>
@@ -145,26 +152,40 @@ const AddEditMedication = () => {
             />
           </div>
 
-          <div className={styles.hoursMinutes}>
-            <div className={styles.hours}>
-              <Dropdown
-                label="Horas *"
-                optionsList={hoursArrList}
-                name="hours"
-                type="text"
-                {...hours}
-              />
+          {hours.disabled ? (
+            <div className={styles.hoursMinutes}>
+              <div className={styles.hoursAlone}>
+                <Dropdown
+                  label="Horas *"
+                  optionsList={hoursArrList}
+                  name="hours"
+                  type="text"
+                  {...hours}
+                />
+              </div>
             </div>
-            <div className={styles.minutes}>
-              <Dropdown
-                label="Min*"
-                optionsList={["", "00", "15", "30", "45"]}
-                name="minutes"
-                type="text"
-                {...minutes}
-              />
+          ) : (
+            <div className={styles.hoursMinutes}>
+              <div className={styles.hours}>
+                <Dropdown
+                  label="Horas *"
+                  optionsList={hoursArrList}
+                  name="hours"
+                  type="text"
+                  {...hours}
+                />
+              </div>
+              <div className={styles.minutes}>
+                <Dropdown
+                  label="Min*"
+                  optionsList={["", "00", "15", "30", "45"]}
+                  name="minutes"
+                  type="text"
+                  {...minutes}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className={styles.btnWrapper}>

@@ -1,4 +1,4 @@
-const GenerateProcessedMedicationObj = ({
+const generateProcessedMedicationObj = ({
   medication,
   indication,
   dosage,
@@ -102,4 +102,4 @@ const GenerateProcessedMedicationObj = ({
   };
 };
 
-export default GenerateProcessedMedicationObj;
+export default generateProcessedMedicationObj;

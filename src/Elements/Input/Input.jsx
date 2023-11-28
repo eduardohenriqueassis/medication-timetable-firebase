@@ -16,6 +16,7 @@ const Input = ({
   placeholder,
   showPasswordIcon,
   onClick,
+  onSelect,
 }) => {
   const [passwordIcon, setPasswordIcon] = React.useState("show Password");
   const [icon, setIcon] = React.useState(true);
@@ -41,6 +42,7 @@ const Input = ({
         placeholder={placeholder}
         required
         onClick={onClick}
+        onSelect={onSelect}
       />
       {error && <p className={styles.error}>{error}</p>}
       {showPasswordIcon && (
