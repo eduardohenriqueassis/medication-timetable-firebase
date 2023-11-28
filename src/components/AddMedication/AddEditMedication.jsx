@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./AddEditMedication.module.css";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
@@ -62,11 +62,10 @@ const AddEditMedication = () => {
     if (dosageType.value.length === 0) {
       dosage.setValueForDosage();
       alert("Por favor escolha um tipo de medida primeiro.");
+      return;
     }
   }
-  function getStep() {
-    return localStorage.getItem("step");
-  }
+
   return (
     <section className={`${styles.tabWrapper} container`}>
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
