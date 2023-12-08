@@ -71,13 +71,7 @@ const AddEditMedication = () => {
       alert("não");
     }
   }
-  // function setAlert() {
-  //   if (dosageType.value.length === 0) {
-  //     dosage.setValueForDosage();
-  //     alert("Por favor escolha um tipo de medida primeiro.");
-  //     return;
-  //   }
-  // }
+
   function getStep() {
     if (dosageType.value === "comprimido" || dosageType.value === "dose")
       setStep("0.5");

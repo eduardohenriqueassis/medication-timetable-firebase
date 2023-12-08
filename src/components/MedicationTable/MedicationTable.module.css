@@ -1,0 +1,251 @@
+.cell {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 1rem;
+  font-size: 0.8rem;
+  /* border-left: #004374 1px solid; */
+}
+
+.cell::after {
+  content: "|";
+  display: block;
+  font-size: 1.5rem;
+  color: #ccc;
+  position: absolute;
+  right: -6px;
+}
+
+.lastCell::after {
+  content: "";
+}
+
+.liHours {
+  width: 32.4%;
+}
+.ulHours {
+  display: flex;
+  width: 100%;
+}
+.ulHours li {
+  flex: 1;
+}
+
+.column0 {
+  width: 10%;
+}
+.column1 {
+  width: 8%;
+}
+.column2 {
+  width: 9.8%;
+}
+.column3 {
+  width: 12%;
+}
+.column4 {
+  width: 5.4%;
+}
+
+.rowsWrapper {
+  width: 100%;
+  transition: 0.2s;
+}
+
+.row {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  color: var(--text-color);
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: 0.2s;
+}
+
+.row:nth-child(odd) {
+  background: #eee;
+}
+.row:nth-child(even) {
+  border: 1px solid #eee;
+}
+
+.row:last-child {
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.iconsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.id {
+  display: none;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.btn:hover,
+button:focus {
+  border-radius: 0.4rem;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--middle-blue), 0 0 0 4px var(--hover-blue);
+}
+
+.edit,
+.delete {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 50%;
+  height: 2.7rem;
+  width: 2.7rem;
+}
+
+.info {
+  display: none;
+}
+
+.loaderWrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+.customLoader {
+  position: relative;
+  top: 150px;
+  --s: 25px;
+  width: 60px;
+  height: 60px;
+  background: #004374;
+  border-radius: 50%;
+  animation: s9 2s infinite linear;
+  clip-path: polygon(
+    0 0,
+    calc(50% - var(--s)) 0,
+    50% var(--s),
+    calc(50% + var(--s)) 0,
+    100% 0,
+    100% calc(50% - var(--s)),
+    calc(100% - var(--s)) 50%,
+    100% calc(50% + var(--s)),
+    100% 100%,
+    calc(50% + var(--s)) 100%,
+    50% calc(100% - var(--s)),
+    calc(50% - var(--s)) 100%,
+    0 100%,
+    0 calc(50% + var(--s)),
+    var(--s) 50%,
+    0 calc(50% - var(--s))
+  );
+  z-index: 200;
+  opacity: 0.8;
+}
+
+@keyframes s9 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 1200px) {
+  .medicationTableWrapper {
+    width: 100%;
+    /* padding: 0 1rem; */
+  }
+  .rowsWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  .row {
+    display: inline-table;
+    box-shadow: 3px 3px 5px #ddd;
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--main-blue);
+  }
+  .cell {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cell::after {
+    content: "";
+  }
+ 
+  .row:nth-child(odd) {
+    background: initial;
+  }
+  .row:nth-child(even) {
+    border: 1px solid var(--main-blue);
+    justify-self: right;
+    border-radius: 0.4rem;
+  }
+  
+  .row:last-child {
+    border-radius: 0.4rem;
+  }
+  
+  .row .cell {
+    width: 100%;
+  }
+  
+  .row .cell:nth-child(odd) {
+    background: #eee;
+  }
+  .ulHours .cell:nth-child(even){
+    background: #eee;
+    
+  }
+  .ulHours .cell:nth-child(odd){
+    background: initial;
+  }
+  .info {
+    display: block;
+    font-size: 1rem;
+    color: var(--main-blue);
+    margin-right: 0.5rem;
+  }
+  .iconsWrapper {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 0 0 .4rem 0;
+    background: white;
+  }
+  .liHours {
+    width: 100%;
+  }
+  .ulHours {
+    display: grid;
+    width: 100%;
+  }
+  .lastCell {
+    border-radius: 0 0 0.4rem .4rem;
+    background: white !important;
+  }
+}
+
+@media (max-width: 670px) {
+  .rowsWrapper {
+    grid-template-columns: 1fr;
+  }
+  .row:nth-child(odd),
+  .row:nth-child(even) {
+    justify-self: center;
+    right: initial;
+  }
+}

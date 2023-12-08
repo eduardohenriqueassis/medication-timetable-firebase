@@ -1,0 +1,61 @@
+.wrapper {
+  animation: animaTop 0.4s forwards;
+  padding-top: 3rem !important;
+}
+.tableWrapper {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0.4rem;
+  border: 1px solid var(--main-blue);
+  box-shadow: 3px 3px 5px #ddd;
+}
+
+@keyframes animaTop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.btnWrapper {
+  min-width: 18rem;
+}
+
+.divTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  padding: 1rem 0;
+  margin-right: 0.4rem;
+  font-size: 1.6rem;
+  transition: 0.2s;
+}
+
+@media (max-width: 1072px) {
+  .title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 862px) {
+  .divTitle {
+    display: block;
+  }
+  .btnWrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tableWrapper {
+    width: 100%;
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+}

@@ -110,6 +110,25 @@ export const Utils = (fieldType) => {
     }
   }
 
+  function setTime() {
+    const today = new Date();
+    var hours = today.getHours();
+
+    var formattedHour = Number((hours < 10 ? "0" : "") + hours);
+
+    let period = "";
+    if (formattedHour > 6 && formattedHour <= 12) {
+      period = "dia";
+    } else if (formattedHour > 12 && formattedHour <= 18) {
+      period = "tarde";
+    } else if (formattedHour > 0 && formattedHour <= 6) {
+      period = "madrugada";
+    } else {
+      period = "noite";
+    }
+    return period;
+  }
+
   return {
     error,
     onBlur,
@@ -118,5 +137,6 @@ export const Utils = (fieldType) => {
     setValueForDosage,
     setDisabledState: () => setDisabledState(value),
     disabled,
+    message: () => setTime()
   };
 };

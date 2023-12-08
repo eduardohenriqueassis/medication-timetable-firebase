@@ -49,6 +49,10 @@
 .logo:hover {
   background: var(--hover-green);
 }
+.welcome {
+  color: var(--main-blue);
+  transition: .3s;
+}
 .right {
   display: flex;
 }
@@ -111,5 +115,19 @@
   to {
     background: #ddd;
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 672px){
+  .welcome{
+    display: none;
+  }
+}
+@media(max-width: 466px){
+  .left {
+    display: none;
+  }
+  .right, .logout{
+    font-size: .9rem;
   }
 }

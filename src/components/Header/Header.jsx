@@ -3,10 +3,13 @@ import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../../Hooks/useAuthentication";
 import { useAuthValue } from "../../context/AuthContext";
+import { Utils } from "../../Util/util";
 
 const Header = () => {
+  const [greeting, setGreeting] = React.useState("");
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
+  const util = Utils();
   const navigationRoutes = [
     { name: "home", route: "/", linkName: "Home", isHidden: false },
     {
@@ -40,6 +43,11 @@ const Header = () => {
     //   linkName: "Cadastrar Medicamento",
     // },
   ];
+
+
+  React.useEffect(() => {
+      setGreeting(util.message);
+  }, []);
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
@@ -48,6 +56,13 @@ const Header = () => {
             <div className={styles.logo}></div>
           </NavLink>
         </div>
+        {user && (
+          <div className={styles.welcome}>
+            <p>
+              Olá {user.displayName.toUpperCase()}, boa {greeting}!{" "}
+            </p>
+          </div>
+        )}
         <div className={styles.right}>
           {navigationRoutes.map((item) => (
             <NavLink

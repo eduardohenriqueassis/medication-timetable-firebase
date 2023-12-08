@@ -8,7 +8,7 @@ const Home = () => {
   function handleClick(event) {
     event.preventDefault();
 
-    navigate("/table");
+    navigate("/add-edit");
   }
 
   return (
