@@ -1,9 +1,11 @@
 import React from "react";
 import TableHead from "../TableHead/TableHead";
 import styles from "./MedicationTable.module.css";
+import { useDeleteMedication } from "../../Hooks/useDeleteMedication";
 
 const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
+  const { deleteMedication } = useDeleteMedication("medications");
 
   React.useEffect(() => {
     if (data) composeArrayRows();
@@ -66,7 +68,7 @@ const MedicationTable = ({ data }) => {
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
-                onClick={handleDelete}
+                onClick={() => handleDelete(medication)}
               >
                 <img src="/src/Assets/delete.png" alt="edit" />
               </button>
@@ -83,10 +85,8 @@ const MedicationTable = ({ data }) => {
     // getMedicationById(medicationId[1]);
   }
 
-  function handleDelete(event) {
-    // const id = event.currentTarget.id;
-    // const medicationId = id.split("-")[1];
-    // deleteMedication(medicationId);
+  function handleDelete({ id }) {
+    deleteMedication(id);
   }
   return (
     <div className={styles.medicationTableWrapper}>

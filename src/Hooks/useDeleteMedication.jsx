@@ -20,7 +20,7 @@ const deleteReducer = (state, action) => {
   }
 };
 
-export const useDeleteDocument = (docCollection) => {
+export const useDeleteMedication = (docCollection) => {
   const [response, dispatch] = useReducer(deleteReducer, initialState);
 
   const [cancelled, setCancelled] = useState(false);
@@ -31,13 +31,13 @@ export const useDeleteDocument = (docCollection) => {
     }
   };
 
-  const deleteDocument = async (id) => {
+  const deleteMedication = async (id) => {
     checkCancelBeforeDispatch({ type: "LOADING" });
     try {
-      const deletedDocument = await deleteDoc(doc(db, docCollection, id));
+      const deletedMedication = await deleteDoc(doc(db, docCollection, id));
       checkCancelBeforeDispatch({
         type: "DELETED_DOC",
-        payload: deletedDocument,
+        payload: deletedMedication,
       });
     } catch (error) {
       checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
@@ -47,5 +47,5 @@ export const useDeleteDocument = (docCollection) => {
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
-  return { deleteDocument, response };
+  return { deleteMedication, response };
 };
