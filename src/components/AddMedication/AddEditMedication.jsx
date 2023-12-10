@@ -8,7 +8,7 @@ import { Utils } from "../../Util/util";
 import { useAuthValue } from "../../context/AuthContext";
 import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicationObj";
 import { useInsertDocument } from "../../Hooks/useInsertDocument";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
@@ -16,6 +16,8 @@ const AddEditMedication = () => {
   const { insertDocument, response } = useInsertDocument("medications");
   const { user } = useAuthValue();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isCreate = location.state;
   const medication = Utils("medication");
   const indication = Utils("indication");
   const dosage = Utils("dosage");

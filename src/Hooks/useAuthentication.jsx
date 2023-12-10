@@ -39,8 +39,6 @@ export const useAuthentication = () => {
       setLoading(false);
       return user;
     } catch (error) {
-      console.log(error.message);
-      console.log(typeof error.message);
       let sysErrMessage;
       if (error.message.includes("Password")) {
         sysErrMessage = "A senha precisa ter pelo menos 6 caracteres.";
@@ -62,7 +60,6 @@ export const useAuthentication = () => {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       setLoading(false);
     } catch (error) {
-      console.log(error.message);
       let sysErrMessage;
       if (
         error.message.includes("user-not-found") ||

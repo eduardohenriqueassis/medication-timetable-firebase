@@ -91,7 +91,19 @@ const MedicationTable = ({ data }) => {
   return (
     <div className={styles.medicationTableWrapper}>
       <TableHead />
-      <div className={styles.rowsWrapper}>{rows}</div>
+      {data && data.length > 0 ? (
+        <div
+          className={`${styles.rowsWrapper} ${
+            data && data.length === 1 ? styles.singleMedication : ""
+          }`}
+        >
+          {rows}
+        </div>
+      ) : (
+        <div className={styles.noData}>
+          <p>Você ainda não tem medicamentos cadastrados.</p>
+        </div>
+      )}
     </div>
   );
 };

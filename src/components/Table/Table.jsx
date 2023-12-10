@@ -10,8 +10,6 @@ const Table = () => {
   const { documents: medications, loading } = useFetchDocuments("medications");
   const navigate = useNavigate();
 
-  console.log(medications);
-
   function handleClick(event) {
     event.preventDefault();
     const isCreate = true;

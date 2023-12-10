@@ -129,6 +129,8 @@ export const Utils = (fieldType) => {
     return period;
   }
 
+  function fillFields(medication) {}
+
   return {
     error,
     onBlur,
@@ -137,6 +139,7 @@ export const Utils = (fieldType) => {
     setValueForDosage,
     setDisabledState: () => setDisabledState(value),
     disabled,
-    message: () => setTime()
+    message: () => setTime(),
+    fillFields,
   };
 };
