@@ -65,14 +65,20 @@ const MedicationTable = ({ data }) => {
                 id={`edit-${medication.uid}`}
                 onClick={() => handleEdit(medication)}
               >
-                <img src="./src/assets/edit.png" alt="edit" />
+                <img
+                  src="./medication-timetable-firebase/src/assets/edit.png"
+                  alt="edit"
+                />
               </button>
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
                 onClick={() => handleDelete(medication)}
               >
-                <img src="./src/assets/delete.png" alt="delete" />
+                <img
+                  src="./medication-timetable-firebase/src/assets/delete.png"
+                  alt="delete"
+                />
               </button>
             </div>
           </li>
