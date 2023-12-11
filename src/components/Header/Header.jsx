@@ -11,7 +11,12 @@ const Header = () => {
   const { logout } = useAuthentication();
   const util = Utils();
   const navigationRoutes = [
-    { name: "home", route: "/", linkName: "Home", isHidden: false },
+    {
+      name: "home",
+      route: "/medication_firebase_deploy",
+      linkName: "Home",
+      isHidden: false,
+    },
     {
       name: "table",
       route: "/table",
