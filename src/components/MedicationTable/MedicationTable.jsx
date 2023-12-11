@@ -66,7 +66,7 @@ const MedicationTable = ({ data }) => {
                 onClick={() => handleEdit(medication)}
               >
                 <img
-                  src="/medication-timetable-firebase/blob/main/src/assets/edit.png"
+                  src="/medication-timetable-firebase/assets/edit.png"
                   alt="edit"
                 />
               </button>
@@ -76,7 +76,7 @@ const MedicationTable = ({ data }) => {
                 onClick={() => handleDelete(medication)}
               >
                 <img
-                  src="/medication-timetable-firebase/src/assets/delete.png"
+                  src="/medication-timetable-firebase/assets/delete.png"
                   alt="delete"
                 />
               </button>
