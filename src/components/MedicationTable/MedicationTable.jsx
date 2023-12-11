@@ -65,14 +65,14 @@ const MedicationTable = ({ data }) => {
                 id={`edit-${medication.uid}`}
                 onClick={() => handleEdit(medication)}
               >
-                <img src="/src/Assets/edit.png" alt="edit" />
+                <img src="./src/Assets/edit.png" alt="edit" />
               </button>
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
                 onClick={() => handleDelete(medication)}
               >
-                <img src="/src/Assets/delete.png" alt="delete" />
+                <img src="./src/Assets/delete.png" alt="delete" />
               </button>
             </div>
           </li>
