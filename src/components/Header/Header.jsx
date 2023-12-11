@@ -57,7 +57,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <div className={styles.left}>
-          <NavLink className={styles.link} to="/">
+          <NavLink className={styles.link} to="/medication_firebase_deploy">
             <div className={styles.logo}></div>
           </NavLink>
         </div>
