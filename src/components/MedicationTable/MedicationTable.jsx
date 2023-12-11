@@ -3,6 +3,8 @@ import TableHead from "../TableHead/TableHead";
 import styles from "./MedicationTable.module.css";
 import { useDeleteMedication } from "../../Hooks/useDeleteMedication";
 import { useNavigate } from "react-router-dom";
+import Edit from "./../../assets/edit.png";
+import Delete from "./../../assets/delete.png";
 
 const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
@@ -65,14 +67,14 @@ const MedicationTable = ({ data }) => {
                 id={`edit-${medication.uid}`}
                 onClick={() => handleEdit(medication)}
               >
-                <img src="/src/Assets/edit.png" alt="edit" />
+                <img src={Edit} alt="edit" />
               </button>
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
                 onClick={() => handleDelete(medication)}
               >
-                <img src="/src/Assets/delete.png" alt="edit" />
+                <img src={Delete} alt="delete" />
               </button>
             </div>
           </li>
