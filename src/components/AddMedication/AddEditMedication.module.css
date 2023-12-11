@@ -40,6 +40,23 @@
   justify-content: space-between;
 }
 
+.medId {
+  /* display: none; */
+  text-align: right;
+}
+.medId p {
+  color: var(--hover-blue);
+  /* background: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  padding: 0.3rem 1rem; */
+}
+.medId p span {
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  padding: 0.3rem 1rem;
+}
+
 .medicationWrapper,
 .indicationWrapper {
   width: 48%;

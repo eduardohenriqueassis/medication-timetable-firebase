@@ -8,13 +8,18 @@ import {
   where,
   QuerySnapshot,
 } from "firebase/firestore";
+import { useAuthValue } from "../context/AuthContext";
 
-export const useFetchDocuments = (docCollection, search = null, uid = null) => {
-  const [documents, setDocuments] = React.useState(null);
+export const useFetchMedications = (
+  docCollection,
+  search = null,
+  uid = null
+) => {
+  const [medications, setMedications] = React.useState(null);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
   const [cancelled, setCancelled] = React.useState(false);
-
+  const { user } = useAuthValue();
   React.useEffect(() => {
     async function loadData() {
       if (cancelled) return;
@@ -24,9 +29,13 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
       try {
         let q;
-        q = await query(collectionRef, orderBy("createdAt", "desc"));
+        q = await query(
+          collectionRef,
+          where("uid", "==", user.uid),
+          orderBy("createdAt", "desc")
+        );
         await onSnapshot(q, (querySnapshot) => {
-          setDocuments(
+          setMedications(
             querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
           );
         });
@@ -43,5 +52,5 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
     return () => setCancelled(true);
   }, []);
 
-  return { documents, loading, error };
+  return { medications, loading, error };
 };

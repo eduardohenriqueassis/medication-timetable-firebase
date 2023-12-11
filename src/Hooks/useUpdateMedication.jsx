@@ -20,7 +20,7 @@ const updateReducer = (state, action) => {
   }
 };
 
-export const UseUpdateMedication = (docCollection) => {
+export const useUpdateMedication = (docCollection) => {
   const [response, dispatch] = useReducer(updateReducer, initialState);
 
   const [cancelled, setCancelled] = useState(false);
@@ -34,10 +34,10 @@ export const UseUpdateMedication = (docCollection) => {
   const updateMedication = async (id, data) => {
     checkCancelBeforeDispatch({ type: "LOADING" });
     try {
-      const docRef = await doc(db, docCollection, id);
-      const updatedMedication = await updateDoc(docRef, data);
+      const medRef = await doc(db, docCollection, id);
+      const updatedMedication = await updateDoc(medRef, data);
       checkCancelBeforeDispatch({
-        type: "UPDATED_DOC",
+        type: "UPDATED_MED",
         payload: updatedMedication,
       });
     } catch (error) {
@@ -45,9 +45,9 @@ export const UseUpdateMedication = (docCollection) => {
     }
   };
 
-  useEffect(() => {
-    return () => setCancelled(true);
-  }, []);
+  // useEffect(() => {
+  //   return () => setCancelled(true);
+  // }, []);
 
   return { updateMedication, response };
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Table.module.css";
-import { useFetchDocuments } from "../../Hooks/useFetchDocuments";
+import { useFetchMedications } from "../../Hooks/useFetchMedications";
 import MedicationTable from "../MedicationTable/MedicationTable";
 import Button from "../../Elements/Button/Button";
 import { useNavigate } from "react-router-dom";
 
 const Table = () => {
   const [query, setQuery] = React.useState("");
-  const { documents: medications, loading } = useFetchDocuments("medications");
+  const { medications, loading } = useFetchMedications("medications");
   const navigate = useNavigate();
 
   function handleClick(event) {

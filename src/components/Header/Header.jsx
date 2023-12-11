@@ -44,10 +44,10 @@ const Header = () => {
     // },
   ];
 
-
   React.useEffect(() => {
-      setGreeting(util.message);
-  }, []);
+    setGreeting(util.message);
+  }, [user]);
+
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
@@ -56,10 +56,10 @@ const Header = () => {
             <div className={styles.logo}></div>
           </NavLink>
         </div>
-        {user && (
+        {user && user.displayName && (
           <div className={styles.welcome}>
             <p>
-              Olá {user.displayName.toUpperCase()}, boa {greeting}!{" "}
+              Olá {user.displayName.toUpperCase()}, {greeting}!
             </p>
           </div>
         )}

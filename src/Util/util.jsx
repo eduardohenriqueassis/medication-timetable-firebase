@@ -118,18 +118,45 @@ export const Utils = (fieldType) => {
 
     let period = "";
     if (formattedHour > 6 && formattedHour <= 12) {
-      period = "dia";
+      period = "bom dia";
     } else if (formattedHour > 12 && formattedHour <= 18) {
-      period = "tarde";
+      period = "boa tarde";
     } else if (formattedHour > 0 && formattedHour <= 6) {
-      period = "madrugada";
+      period = "boa madrugada";
     } else {
-      period = "noite";
+      period = "boa noite";
     }
     return period;
   }
 
-  function fillFields(medication) {}
+  function fillFields(item) {
+    setValue(item);
+  }
+
+  function extractHourFromMedicationData(space) {
+    let formattedSpace;
+    space === "1 por dia"
+      ? (formattedSpace = "1/dia")
+      : (formattedSpace = space.slice(space.indexOf("/") + 1));
+    return formattedSpace;
+  }
+
+  function formatDateToEdit(date) {
+    const dateArr = date.split("/");
+    const year = dateArr[2];
+    const month = dateArr[1];
+    const day = dateArr[0];
+    return `${year}-${month}-${day}`;
+  }
+
+  function extractS(str) {
+    let formattedStr;
+    if (str.charAt(str.length - 1) === "s") {
+      formattedStr = str.slice(0, -1);
+    } else formattedStr = str;
+
+    return formattedStr;
+  }
 
   return {
     error,
@@ -141,5 +168,8 @@ export const Utils = (fieldType) => {
     disabled,
     message: () => setTime(),
     fillFields,
+    extractHourFromMedicationData,
+    formatDateToEdit,
+    extractS,
   };
 };

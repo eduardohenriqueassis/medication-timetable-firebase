@@ -2,10 +2,12 @@ import React from "react";
 import TableHead from "../TableHead/TableHead";
 import styles from "./MedicationTable.module.css";
 import { useDeleteMedication } from "../../Hooks/useDeleteMedication";
+import { useNavigate } from "react-router-dom";
 
 const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
   const { deleteMedication } = useDeleteMedication("medications");
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (data) composeArrayRows();
@@ -61,7 +63,7 @@ const MedicationTable = ({ data }) => {
               <button
                 className={`${styles.edit} ${styles.btn}`}
                 id={`edit-${medication.uid}`}
-                onClick={handleEdit}
+                onClick={() => handleEdit(medication)}
               >
                 <img src="/src/Assets/edit.png" alt="edit" />
               </button>
@@ -78,11 +80,8 @@ const MedicationTable = ({ data }) => {
       ))
     );
   }
-  function handleEdit(event) {
-    // event.preventDefault();
-    // const id = event.currentTarget.id;
-    // const medicationId = id.split("-");
-    // getMedicationById(medicationId[1]);
+  function handleEdit(medication) {
+    navigate("/add-edit", { state: { medication } });
   }
 
   function handleDelete({ id }) {

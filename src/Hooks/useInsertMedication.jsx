@@ -23,7 +23,7 @@ const insertReducer = (state, action) => {
   }
 };
 
-export const useInsertDocument = (docCollection) => {
+export const useInsertMedication = (docCollection) => {
   const [response, dispatch] = React.useReducer(insertReducer, initialState);
   const [cancelled, setCancelled] = React.useState(false);
 
@@ -33,20 +33,20 @@ export const useInsertDocument = (docCollection) => {
     }
   };
 
-  const insertDocument = async (document) => {
+  const insertMedication = async (medication) => {
     checkCancelledBeforeDispatch({
       type: "LOADING",
     });
     try {
-      const newDocument = { ...document, createdAt: Timestamp.now() };
-      const insertedDocument = await addDoc(
+      const newMedication = { ...medication, createdAt: Timestamp.now() };
+      const insertedMedication = await addDoc(
         collection(db, docCollection),
-        newDocument
+        newMedication
       );
 
       checkCancelledBeforeDispatch({
         type: "INSERTED_DOC",
-        payload: insertedDocument,
+        payload: insertedMedication,
       });
     } catch (error) {
       checkCancelledBeforeDispatch({
@@ -58,5 +58,5 @@ export const useInsertDocument = (docCollection) => {
   // React.useEffect(() => {
   //   return () => setCancelled(true);
   // }, []);
-  return { insertDocument, response };
+  return { insertMedication, response };
 };

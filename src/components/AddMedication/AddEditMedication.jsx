@@ -4,20 +4,25 @@ import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import Dropdown from "../../Elements/Dropdown/Dropdown";
 import Calendar from "../../Elements/Calendar/Calendar";
-import { Utils } from "../../Util/util";
+import { Utils, utils } from "../../Util/util";
 import { useAuthValue } from "../../context/AuthContext";
 import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicationObj";
-import { useInsertDocument } from "../../Hooks/useInsertDocument";
+import { useInsertMedication } from "../../Hooks/useInsertMedication";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUpdateMedication } from "../../Hooks/useUpdateMedication";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
   const [step, setStep] = React.useState("1");
-  const { insertDocument, response } = useInsertDocument("medications");
+  const [medId, setMedId] = React.useState("");
+  const [isCreate, setIsCreate] = React.useState(true);
+  const { insertMedication, response } = useInsertMedication("medications");
   const { user } = useAuthValue();
   const navigate = useNavigate();
   const location = useLocation();
-  const isCreate = location.state;
+  const { updateMedication, response: updateResponse } =
+    useUpdateMedication("medications");
+  const medicationData = location.state;
   const medication = Utils("medication");
   const indication = Utils("indication");
   const dosage = Utils("dosage");
@@ -27,6 +32,29 @@ const AddEditMedication = () => {
   const space = Utils();
   const hours = Utils();
   const minutes = Utils();
+
+  React.useEffect(() => {
+    if (medicationData === null) {
+      setIsCreate(true);
+    } else if (medicationData && !medicationData.isCreate) {
+      setIsCreate(false);
+      fillFieldsToEdit(medicationData);
+    } else setIsCreate(true);
+  }, []);
+
+  function fillFieldsToEdit(data) {
+    setMedId(data.medication.id);
+    const medItems = data.medication.medicationData;
+    medication.fillFields(medItems.medication);
+    indication.fillFields(medItems.indication);
+    dosage.fillFields(medItems.dosage);
+    dosageType.fillFields(dosageType.extractS(medItems.dosageType));
+    amountOfDays.fillFields(medItems.amountOfDays);
+    space.fillFields(space.extractHourFromMedicationData(medItems.space));
+    hours.fillFields(medItems.listOfHours[0].split(":")[0]);
+    minutes.fillFields(medItems.listOfHours[0].split(":")[1]);
+    calendar.fillFields(calendar.formatDateToEdit(medItems.start));
+  }
 
   React.useEffect(() => {
     let arr = ["", "Hora atual"];
@@ -63,11 +91,21 @@ const AddEditMedication = () => {
         minutes,
       };
       const medicationData = generateProcessedMedicationObj({ ...obj });
-      insertDocument({
-        medicationData,
-        uid: user.uid,
-        createdBy: user.displayName,
-      });
+      if (isCreate) {
+        insertMedication({
+          medicationData,
+          uid: user.uid,
+          createdBy: user.displayName,
+        });
+      } else {
+        const obj = {
+          medicationData,
+        };
+        obj.uid = user.uid;
+        obj.createdBy = user.displayName;
+        updateMedication(medId, obj);
+      }
+
       navigate("/table");
     } else {
       alert("não");
@@ -84,6 +122,13 @@ const AddEditMedication = () => {
     <section className={`${styles.tabWrapper} container`}>
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
+        {medId && (
+          <div className={styles.medId}>
+            <p>
+              Id: <span>{medId}</span>
+            </p>
+          </div>
+        )}
         <div className={styles.medicationIndicationWrapper}>
           <div className={styles.medicationWrapper}>
             <Input
@@ -196,10 +241,16 @@ const AddEditMedication = () => {
         </div>
 
         <div className={styles.btnWrapper}>
-          {response.loading ? (
-            <Button disabled>Cadastrando...</Button>
-          ) : (
+          {response.loading || updateResponse.loading ? (
+            isCreate ? (
+              <Button disabled>Cadastrando...</Button>
+            ) : (
+              <Button>Atualizando</Button>
+            )
+          ) : isCreate ? (
             <Button>Cadastrar Medicamento</Button>
+          ) : (
+            <Button>Atualizar Medicamento</Button>
           )}
         </div>
         {response.error && <p className={styles.error}>{response.error}</p>}
