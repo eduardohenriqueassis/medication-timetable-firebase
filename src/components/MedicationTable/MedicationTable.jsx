@@ -66,7 +66,7 @@ const MedicationTable = ({ data }) => {
                 onClick={() => handleEdit(medication)}
               >
                 <img
-                  src="./medication-timetable-firebase/src/assets/edit.png"
+                  src="./medication-timetable-firebase/blob/main/src/assets/edit.png"
                   alt="edit"
                 />
               </button>
