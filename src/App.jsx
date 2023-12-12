@@ -31,20 +31,34 @@ const App = () => {
   return (
     <div className="app">
       <AuthProvider value={{ user }}>
-
         <SuccessProvider>
           <BrowserRouter>
             <Header />
             <main className="appBody">
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route
+                  path="//medication-timetable-firebase/"
+                  element={<Home />}
+                />
                 <Route
                   path="/login"
-                  element={!user ? <Login /> : <Navigate to="/" />}
+                  element={
+                    !user ? (
+                      <Login />
+                    ) : (
+                      <Navigate to="/medication-timetable-firebase/" />
+                    )
+                  }
                 />
                 <Route
                   path="/register"
-                  element={!user ? <Register /> : <Navigate to="/" />}
+                  element={
+                    !user ? (
+                      <Register />
+                    ) : (
+                      <Navigate to="/medication-timetable-firebase/" />
+                    )
+                  }
                 />
                 <Route
                   path="/table"
@@ -62,7 +76,6 @@ const App = () => {
             <Footer />
           </BrowserRouter>
         </SuccessProvider>
-
       </AuthProvider>
     </div>
   );
