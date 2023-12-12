@@ -40,7 +40,6 @@ const Input = ({
         min={min}
         step={step}
         placeholder={placeholder}
-        required
         onClick={onClick}
         onSelect={onSelect}
       />

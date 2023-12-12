@@ -13,7 +13,7 @@ const Header = () => {
   const navigationRoutes = [
     {
       name: "home",
-      route: "/medication-timetable-firebase",
+      route: "/",
       linkName: "Home",
       isHidden: false,
     },
@@ -57,7 +57,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <div className={styles.left}>
-          <NavLink className={styles.link} to="/medication-timetable-firebase">
+          <NavLink className={styles.link} to="/">
             <div className={styles.logo}></div>
           </NavLink>
         </div>
