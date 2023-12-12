@@ -31,6 +31,7 @@ const App = () => {
   return (
     <div className="app">
       <AuthProvider value={{ user }}>
+
         <SuccessProvider>
           <BrowserRouter>
             <Header />
@@ -61,6 +62,7 @@ const App = () => {
             <Footer />
           </BrowserRouter>
         </SuccessProvider>
+
       </AuthProvider>
     </div>
   );
