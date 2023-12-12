@@ -11,7 +11,12 @@ const Header = () => {
   const { logout } = useAuthentication();
   const util = Utils();
   const navigationRoutes = [
-    { name: "home", route: "/", linkName: "Home", isHidden: false },
+    {
+      name: "home",
+      route: "/medication-timetable-firebase",
+      linkName: "Home",
+      isHidden: false,
+    },
     {
       name: "table",
       route: "/table",
@@ -52,7 +57,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <div className={styles.left}>
-          <NavLink className={styles.link} to="/">
+          <NavLink className={styles.link} to="/medication-timetable-firebase">
             <div className={styles.logo}></div>
           </NavLink>
         </div>
