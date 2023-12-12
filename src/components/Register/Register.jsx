@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Register.module.css";
 import Input from "../../Elements/Input/Input";
 import Button from "../../Elements/Button/Button";
 import { NavLink } from "react-router-dom";
 import { Utils } from "./../../Util/util.jsx";
 import { useAuthentication } from "../../Hooks/useAuthentication.jsx";
+import { SuccessContext } from "../../context/CreateUserSuccessContext.jsx";
 
 const Register = () => {
   const displayName = Utils("name");
@@ -12,6 +13,7 @@ const Register = () => {
   const password = Utils("password");
   const confirmPassword = Utils("confirm");
   const [error, setError] = React.useState(null);
+  const { toggleSuccess } = useContext(SuccessContext);
 
   const { createUser, error: authError, loading } = useAuthentication();
 
@@ -30,6 +32,7 @@ const Register = () => {
     // }
 
     await createUser(user);
+    toggleSuccess();
     localStorage.removeItem("password");
   }
 

@@ -36,7 +36,6 @@ export const useAuthentication = () => {
       await updateProfile(user, {
         displayName: data.displayName,
       });
-      setLoading(false);
       return user;
     } catch (error) {
       let sysErrMessage;
@@ -95,5 +94,13 @@ export const useAuthentication = () => {
     return () => setCancelled(true);
   }, []);
 
-  return { auth, createUser, error, loading, logout, login, resetPassword };
+  return {
+    auth,
+    createUser,
+    error,
+    loading,
+    logout,
+    login,
+    resetPassword,
+  };
 };

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 import Button from "../../Elements/Button/Button";
+import { SuccessContext } from "../../context/CreateUserSuccessContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { createUserSuccess, toggleSuccess } = useContext(SuccessContext);
   function handleClick(event) {
     event.preventDefault();
-
     navigate("/add-edit");
   }
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      toggleSuccess();
+    }, 4000);
+    if (createUserSuccess === false) clearTimeout(timer);
+  }, [createUserSuccess]);
 
   return (
     <main className={`container animate`}>
@@ -32,6 +39,13 @@ const Home = () => {
         </p>
       </div>
 
+      {createUserSuccess && (
+        <div className={styles.successWrapper}>
+          <div className={styles.success}>
+            <h2>Conta criada com Sucesso!</h2>
+          </div>
+        </div>
+      )}
       <div className={styles.btnWrapper}>
         <Button onClick={handleClick}>Cadastrar Medicamento</Button>
       </div>
