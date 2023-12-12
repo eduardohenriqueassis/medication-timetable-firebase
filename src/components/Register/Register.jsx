@@ -18,6 +18,13 @@ const Register = () => {
   const { createUser, error: authError, loading } = useAuthentication();
 
   async function handleSubmit(e) {
+    if (
+      displayName.value.length === 0 ||
+      email.value.length === 0 ||
+      password.value.length === 0 ||
+      confirmPassword.value.length === 0
+    )
+      return;
     e.preventDefault();
     setError(null);
     const user = {
