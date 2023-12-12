@@ -3,8 +3,10 @@ import TableHead from "../TableHead/TableHead";
 import styles from "./MedicationTable.module.css";
 import { useDeleteMedication } from "../../Hooks/useDeleteMedication";
 import { useNavigate } from "react-router-dom";
+
 import Edit from "./../../assets/edit.png";
 import Delete from "./../../assets/delete.png";
+
 
 const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
