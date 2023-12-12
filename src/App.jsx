@@ -37,11 +37,11 @@ const App = () => {
               <Route path="/medication-timetable-firebase" element={<Home />} />
               <Route
                 path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
+                element={!user ? <Login /> : <Navigate to="/table" />}
               />
               <Route
                 path="/register"
-                element={!user ? <Register /> : <Navigate to="/" />}
+                element={!user ? <Register /> : <Navigate to="/table" />}
               />
               <Route
                 path="/table"
