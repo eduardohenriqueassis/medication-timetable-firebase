@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { SuccessProvider } from "./context/CreateUserSuccessContext";
 import { onAuthStateChanged } from "firebase/auth";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -30,34 +31,36 @@ const App = () => {
   return (
     <div className="app">
       <AuthProvider value={{ user }}>
-        <BrowserRouter>
-          <Header />
-          <main className="appBody">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/register"
-                element={!user ? <Register /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/table"
-                element={user ? <Table /> : <Navigate to="/login " />}
-              />
-              <Route
-                path="/add-edit"
-                element={
-                  user ? <AddEditMedication /> : <Navigate to="/login" />
-                }
-              />
-              <Route path="/resetPassword" element={<ResetPassword />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
+        <SuccessProvider>
+          <BrowserRouter>
+            <Header />
+            <main className="appBody">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="/login"
+                  element={!user ? <Login /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/register"
+                  element={!user ? <Register /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/table"
+                  element={user ? <Table /> : <Navigate to="/login " />}
+                />
+                <Route
+                  path="/add-edit"
+                  element={
+                    user ? <AddEditMedication /> : <Navigate to="/login" />
+                  }
+                />
+                <Route path="/resetPassword" element={<ResetPassword />} />
+              </Routes>
+            </main>
+            <Footer />
+          </BrowserRouter>
+        </SuccessProvider>
       </AuthProvider>
     </div>
   );
