@@ -37,7 +37,7 @@ const App = () => {
             <main className="appBody">
               <Routes>
                 <Route
-                  path="//medication-timetable-firebase/"
+                  path="/medication-timetable-firebase"
                   element={<Home />}
                 />
                 <Route
@@ -46,7 +46,7 @@ const App = () => {
                     !user ? (
                       <Login />
                     ) : (
-                      <Navigate to="/medication-timetable-firebase/" />
+                      <Navigate to="/medication-timetable-firebase" />
                     )
                   }
                 />
@@ -56,7 +56,7 @@ const App = () => {
                     !user ? (
                       <Register />
                     ) : (
-                      <Navigate to="/medication-timetable-firebase/" />
+                      <Navigate to="/medication-timetable-firebase" />
                     )
                   }
                 />
