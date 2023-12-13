@@ -201,16 +201,18 @@ const AddEditMedication = () => {
                 {...amountOfDays}
               />
             </div>
-            <div className={styles.checkboxWrapper}>
-              <div className={styles.btnCheckbox} onClick={toggleCheckbox}>
-                {checked ? (
-                  <img src={Checked} alt="" />
-                ) : (
-                  <div className={styles.checkbox}></div>
-                )}
+            {
+              <div className={styles.checkboxWrapper}>
+                <div className={styles.btnCheckbox} onClick={toggleCheckbox}>
+                  {checked ? (
+                    <img src={Checked} alt="" />
+                  ) : (
+                    <div className={styles.checkbox}></div>
+                  )}
+                </div>
+                <p>Uso contínuo?</p>
               </div>
-              <p>Uso contínuo?</p>
-            </div>
+            }
           </div>
         </div>
         <div className={styles.hoursSpaceWrapper}>
