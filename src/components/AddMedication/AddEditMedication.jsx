@@ -10,10 +10,12 @@ import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicat
 import { useInsertMedication } from "../../Hooks/useInsertMedication";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUpdateMedication } from "../../Hooks/useUpdateMedication";
+import Checked from "../../assets/checkbox-checked.png";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
   const [step, setStep] = React.useState("1");
+  const [checked, setChecked] = React.useState(false);
   const [medId, setMedId] = React.useState("");
   const [isCreate, setIsCreate] = React.useState(true);
   const { insertMedication, response } = useInsertMedication("medications");
@@ -118,9 +120,17 @@ const AddEditMedication = () => {
     else setStep("1");
   }
 
+  function toggleCheckbox() {
+    checked ? setChecked(false) : setChecked(true);
+  }
+
   return (
     <section className={`${styles.tabWrapper} container`}>
-      <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
+      {isCreate ? (
+        <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
+      ) : (
+        <h1 className={styles.h1}>Atualize os dados do seu medicamento.</h1>
+      )}
       <form className={styles.form} onSubmit={handleSubmit}>
         {medId && (
           <div className={styles.medId}>
@@ -190,6 +200,16 @@ const AddEditMedication = () => {
                 min="1"
                 {...amountOfDays}
               />
+            </div>
+            <div className={styles.checkboxWrapper}>
+              <div className={styles.btnCheckbox} onClick={toggleCheckbox}>
+                {checked ? (
+                  <img src={Checked} alt="" />
+                ) : (
+                  <div className={styles.checkbox}></div>
+                )}
+              </div>
+              <p>Uso contínuo?</p>
             </div>
           </div>
         </div>

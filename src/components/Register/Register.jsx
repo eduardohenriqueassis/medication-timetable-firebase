@@ -26,17 +26,21 @@ const Register = () => {
     )
       return;
     e.preventDefault();
+    if (
+      displayName.value.length === 0 ||
+      email.value.length === 0 ||
+      password.value.length === 0 ||
+      confirmPassword.value.length === 0
+    ) {
+      setError("Preencha o formulário");
+      return;
+    }
     setError(null);
     const user = {
       displayName: displayName.value,
       email: email.value,
       password: password.value,
     };
-
-    // if (password.value != confirmPassword.value) {
-    //   setError("As senhas não conferem.");
-    //   return;
-    // }
 
     await createUser(user);
     toggleSuccess();
@@ -57,18 +61,21 @@ const Register = () => {
           type="text"
           placeholder="Nome do Usuário"
           {...displayName}
+          onSelect={() => setError(null)}
         />
         <Input
           label="Email:"
           type="email"
           placeholder="E-mail do Usuário"
           {...email}
+          onSelect={() => setError(null)}
         />
         <Input
           label="Senha:"
           type="password"
           placeholder="Crie sua senha"
           {...password}
+          onSelect={() => setError(null)}
           showPasswordIcon={true}
         />
         <Input
@@ -76,6 +83,7 @@ const Register = () => {
           type="password"
           placeholder="Confirme sua senha"
           {...confirmPassword}
+          onSelect={() => setError(null)}
           showPasswordIcon={true}
         />
         {loading ? (
