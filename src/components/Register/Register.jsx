@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Register.module.css";
 import Input from "../../Elements/Input/Input";
 import Button from "../../Elements/Button/Button";
@@ -13,7 +13,11 @@ const Register = () => {
   const password = Utils("password");
   const confirmPassword = Utils("confirm");
   const [error, setError] = React.useState(null);
-  const { toggleSuccess } = useContext(SuccessContext);
+  const { toggleSuccess } = React.useContext(SuccessContext);
+  const nameRef = React.useRef(null);
+  const emailRef = React.useRef(null);
+  const passwordRef = React.useRef(null);
+  const confirmPasswordRef = React.useRef(null);
 
   const { createUser, error: authError, loading } = useAuthentication();
 
@@ -41,10 +45,30 @@ const Register = () => {
   }
 
   React.useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+
+  React.useEffect(() => {
     if (authError) {
       setError(authError);
     }
   }, [authError]);
+
+  function callOnBlur(e) {
+    if (e.currentTarget.placeholder === 'Nome do Usuário'){
+      displayName.onBlur(e);
+      if(displayName.value.length > 0 && displayName.error === null) emailRef.current.focus();
+    }
+    if(e.currentTarget.placeholder === "E-mail do Usuário"){
+      email.onBlur(e);
+      if(email.value.length > 0 && email.error === null) passwordRef.current.focus();
+    }
+    if(e.currentTarget.placeholder === "Crie sua senha"){
+      password.onBlur(e);
+      if(password.value.length> 0 && password.error === null) confirmPasswordRef.current.focus();
+    }
+  }
+
   return (
     <section className={`container animate ${styles.registerForm}`}>
       <h2 className="title">Crie sua conta</h2>
@@ -53,31 +77,40 @@ const Register = () => {
           label="Nome:"
           type="text"
           placeholder="Nome do Usuário"
+          onSelect={() => {
+            setError(null);
+          }}
+          ref={nameRef}
           {...displayName}
-          onSelect={() => setError(null)}
-        />
+          onBlur={(e) => callOnBlur(e)}
+          />
         <Input
           label="Email:"
           type="email"
           placeholder="E-mail do Usuário"
-          {...email}
           onSelect={() => setError(null)}
-        />
+          ref={emailRef}
+          {...email}
+          onBlur={(e) => callOnBlur(e)}
+          />
         <Input
           label="Senha:"
           type="password"
           placeholder="Crie sua senha"
-          {...password}
           onSelect={() => setError(null)}
           showPasswordIcon={true}
+          ref={passwordRef}
+          {...password}
+          onBlur={(e) => callOnBlur(e)}
         />
         <Input
           label="Confirme:"
           type="password"
           placeholder="Confirme sua senha"
-          {...confirmPassword}
           onSelect={() => setError(null)}
+          ref={confirmPasswordRef}
           showPasswordIcon={true}
+          {...confirmPassword}
         />
         {loading ? (
           <Button disabled>Criando...</Button>
