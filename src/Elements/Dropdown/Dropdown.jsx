@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Dropdown.module.css";
 
-const Dropdown = ({ label, optionsList, error, value, onChange, onBlur }) => {
+const Dropdown = React.forwardRef(({ label, optionsList, error, value, onChange, onBlur },ref) => {
   let options = optionsList.map((option, index) => (
     <option className={styles.option} key={index + 1} value={option}>
       {option}
@@ -21,6 +21,7 @@ const Dropdown = ({ label, optionsList, error, value, onChange, onBlur }) => {
           id={label}
           onChange={onChange}
           onBlur={onBlur}
+          ref={ref}
         >
           {options}
         </select>
@@ -28,6 +29,6 @@ const Dropdown = ({ label, optionsList, error, value, onChange, onBlur }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Dropdown;

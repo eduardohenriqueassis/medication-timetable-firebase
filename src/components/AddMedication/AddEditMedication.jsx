@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./AddEditMedication.module.css";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
