@@ -41,7 +41,7 @@
 }
 
 .medId {
-  /* display: none; */
+  display: none;
   text-align: right;
 }
 .medId p {
