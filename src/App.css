@@ -5,6 +5,11 @@ html {
 }
 
 :root {
+  --gray-one: #aaa;
+  --gray-two: #bbb;
+  --gray-three: #ccc;
+  --gray-four:#ddd;
+  --gray-five: #eee;
   --gray-blue: #4a6070;
   --dark-blue: #001f36;
   --text-color: #001423;

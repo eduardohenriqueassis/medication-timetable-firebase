@@ -7,7 +7,7 @@
   width: 100%;
   border-radius: 0.4rem;
   border: 1px solid var(--main-blue);
-  box-shadow: 3px 3px 5px #ddd;
+  box-shadow: 3px 3px 5px var(--gray-four);
 }
 
 @keyframes animaTop {

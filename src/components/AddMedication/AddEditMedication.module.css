@@ -20,7 +20,7 @@
   border: 1px solid var(--main-blue);
   border-radius: 0.4rem;
   padding: 2rem 1rem 1rem;
-  box-shadow: 3px 3px 5px #ccc;
+  box-shadow: 3px 3px 5px var(--gray-three);
   box-sizing: border-box;
   background: var(--super-light-blue);
 }
@@ -41,18 +41,18 @@
 }
 
 .medId {
-  /* display: none; */
+  display: none;
   text-align: right;
 }
 .medId p {
   color: var(--hover-blue);
-  /* background: #ddd;
-  border: 1px solid #ccc;
+  /* background: var(--gray-four);
+  border: 1px solid var(--gray-three);
   border-radius: 0.4rem;
   padding: 0.3rem 1rem; */
 }
 .medId p span {
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-three);
   border-radius: 0.4rem;
   padding: 0.3rem 1rem;
 }
@@ -156,6 +156,7 @@
   right: 9px;
   /* border: 1px solid red; */
 }
+
 @media (max-width: 700px) {
   .checkboxWrapper {
     left: 0;
@@ -173,7 +174,7 @@
   height: 1.2rem;
   margin-right: 0.6rem;
   border-radius: 0.3rem;
-  background: #eee;
+  background: var(--gray-five);
 }
 
 .checkbox:hover,
@@ -239,4 +240,8 @@
   .hoursSpaceWrapper {
     margin-top: 0.5rem;
   }
+}
+
+.disabledInput {
+  border: 1px solid var(--gray-three);
 }

@@ -38,8 +38,12 @@ export const types = {
 
 export const Utils = (fieldType) => {
   const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
+
+  function callOnBlur(e) {
+    onBlur(e);
+  }
 
   function onBlur({ currentTarget }) {
     if (fieldType === "password") {
@@ -91,7 +95,7 @@ export const Utils = (fieldType) => {
     const toUpper = fieldType === "medication" || fieldType === "indication";
     const elementName = target.attributes.label;
     const inputValue = target.value === "" || target.value === "Hora atual";
-    setError(false);
+    setError(null);
     setValue(toUpper ? target.value.toUpperCase() : target.value);
     if (elementName && elementName.nodeValue === "Horas *" && inputValue) {
       setDisabled(true);
@@ -158,9 +162,13 @@ export const Utils = (fieldType) => {
     return formattedStr;
   }
 
+  function checkFormOnSubmit(bool) {
+    !bool ? setError("Preencha um valor.") : setError(null);
+  }
+
   return {
     error,
-    onBlur,
+    onBlur: callOnBlur,
     onChange,
     value,
     setValueForDosage,
@@ -171,5 +179,7 @@ export const Utils = (fieldType) => {
     extractHourFromMedicationData,
     formatDateToEdit,
     extractS,
+    checkFormOnSubmit,
+    setError,
   };
 };

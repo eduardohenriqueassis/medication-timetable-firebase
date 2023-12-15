@@ -13,7 +13,7 @@
   content: "|";
   display: block;
   font-size: 1.5rem;
-  color: #ccc;
+  color: var(--gray-three);
   position: absolute;
   right: -6px;
 }
@@ -65,10 +65,10 @@
 }
 
 .row:nth-child(odd) {
-  background: #eee;
+  background: var(--gray-five);
 }
 .row:nth-child(even) {
-  border: 1px solid #eee;
+  border: 1px solid var(--gray-five);
 }
 
 .row:last-child {
@@ -186,7 +186,7 @@ button:focus {
   }
   .row {
     display: inline-table;
-    box-shadow: 3px 3px 5px #ddd;
+    box-shadow: 3px 3px 5px var(--gray-four);
     font-size: 1rem;
     border-radius: 0.4rem;
     border: 1px solid var(--main-blue);
@@ -217,10 +217,10 @@ button:focus {
   }
 
   .row .cell:nth-child(odd) {
-    background: #eee;
+    background: var(--gray-five);
   }
   .ulHours .cell:nth-child(even) {
-    background: #eee;
+    background: var(--gray-five);
   }
   .ulHours .cell:nth-child(odd) {
     background: initial;

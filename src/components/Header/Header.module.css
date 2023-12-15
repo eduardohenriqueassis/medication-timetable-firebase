@@ -67,7 +67,7 @@
   border: 1px solid transparent;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   color: var(--main-blue);
-  border-left: 1px solid #eee;
+  border-left: 1px solid var(--gray-five);
   margin-left: 0.6rem;
   padding: 1.2rem 0.5rem 1.2rem 0.5rem;
   border-radius: 0.4rem;
@@ -75,7 +75,7 @@
   transition: 0.2s;
 }
 .logout:hover {
-  background: #ddd;
+  background: var(--gray-four);
   color: #777;
 }
 
@@ -109,11 +109,11 @@
 
 @keyframes opacity {
   from {
-    background: #eee;
+    background: var(--gray-five);
     padding: 1.2rem 0.5rem 0rem 0.5rem;
   }
   to {
-    background: #ddd;
+    background: var(--gray-four);
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
   }
 }

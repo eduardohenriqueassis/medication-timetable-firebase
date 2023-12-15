@@ -10,7 +10,7 @@
   padding: 0.4rem;
   border-radius: 0.4rem;
   border: var(--main-blue) 1px solid;
-  background: #eee;
+  background: var(--gray-five);
   height: 3rem;
 }
 
@@ -46,3 +46,19 @@
 .icon:hover {
   cursor: pointer;
 }
+
+.disabledInput input {
+  border-color: var(--gray-two);
+  color: var(--gray-five);
+}
+.disabledInput label {
+  color: var(--gray-two);
+}
+
+.disabledInput input:focus,
+.disabledInput input:hover {
+  background: var(--gray-five);
+  border: 1px solid var(--gray-two);
+  box-shadow: none;
+}
+
