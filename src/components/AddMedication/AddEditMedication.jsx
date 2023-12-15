@@ -51,7 +51,12 @@ const AddEditMedication = () => {
     indication.fillFields(medItems.indication);
     dosage.fillFields(medItems.dosage);
     dosageType.fillFields(dosageType.extractS(medItems.dosageType));
-    amountOfDays.fillFields(medItems.amountOfDays);
+    if (medItems.amountOfDays === "0") {
+      setChecked(true);
+    } else {
+      setChecked(false);
+      amountOfDays.fillFields(medItems.amountOfDays);
+    }
     space.fillFields(space.extractHourFromMedicationData(medItems.space));
     hours.fillFields(medItems.listOfHours[0].split(":")[0]);
     minutes.fillFields(medItems.listOfHours[0].split(":")[1]);
@@ -65,6 +70,13 @@ const AddEditMedication = () => {
     }
     setHoursArrList(arr);
   }, []);
+
+  React.useEffect(() => {
+    if (checked) {
+      amountOfDays.fillFields("0");
+      amountOfDays.setError(null);
+    } else amountOfDays.fillFields("");
+  }, [checked]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -110,7 +122,16 @@ const AddEditMedication = () => {
 
       navigate("/table");
     } else {
-      alert("não");
+      if (medication.value.length === 0) medication.checkFormOnSubmit();
+      if (indication.value.length === 0) indication.checkFormOnSubmit();
+      if (dosage.value.length === 0) dosage.checkFormOnSubmit();
+      if (dosageType.value.length === 0) dosageType.checkFormOnSubmit();
+      if (calendar.value.length === 0) calendar.checkFormOnSubmit();
+      if (amountOfDays.value.length === 0 && !checked)
+        amountOfDays.checkFormOnSubmit();
+      if (space.value.length === 0) space.checkFormOnSubmit();
+      if (hours.value.length === 0) hours.checkFormOnSubmit();
+      if (minutes.value.length === 0) minutes.checkFormOnSubmit();
     }
   }
 
@@ -193,20 +214,37 @@ const AddEditMedication = () => {
               />
             </div>
             <div className={styles.daysWrapper}>
-              <Input
-                label="Nº de dias *"
-                name="amountOfDays"
-                type="number"
-                min="1"
-                {...amountOfDays}
-              />
+              {checked ? (
+                <Input
+                  label="Nº de dias *"
+                  name="amountOfDays"
+                  type="number"
+                  {...amountOfDays}
+                  disabled
+                />
+              ) : (
+                <Input
+                  label="Nº de dias *"
+                  name="amountOfDays"
+                  type="number"
+                  min="1"
+                  {...amountOfDays}
+                />
+              )}
             </div>
             <div className={styles.checkboxWrapper}>
               <div className={styles.btnCheckbox} onClick={toggleCheckbox}>
                 {checked ? (
-                  <img src={Checked} alt="" />
+                  <img
+                    src={Checked}
+                    alt="checked"
+                    aria-label="Uso contínuo? marcado"
+                  />
                 ) : (
-                  <div className={styles.checkbox}></div>
+                  <div
+                    className={styles.checkbox}
+                    aria-label="Uso contínuo? desmarcado"
+                  ></div>
                 )}
               </div>
               <p>Uso contínuo?</p>

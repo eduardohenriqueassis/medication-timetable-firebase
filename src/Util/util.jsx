@@ -162,6 +162,10 @@ export const Utils = (fieldType) => {
     return formattedStr;
   }
 
+  function checkFormOnSubmit(bool) {
+    !bool ? setError("Preencha um valor.") : setError(null);
+  }
+
   return {
     error,
     onBlur: callOnBlur,
@@ -175,5 +179,7 @@ export const Utils = (fieldType) => {
     extractHourFromMedicationData,
     formatDateToEdit,
     extractS,
+    checkFormOnSubmit,
+    setError,
   };
 };

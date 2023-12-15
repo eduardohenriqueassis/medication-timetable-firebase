@@ -156,6 +156,7 @@
   right: 9px;
   /* border: 1px solid red; */
 }
+
 @media (max-width: 700px) {
   .checkboxWrapper {
     left: 0;
@@ -239,4 +240,8 @@
   .hoursSpaceWrapper {
     margin-top: 0.5rem;
   }
+}
+
+.disabledInput {
+  border: 1px solid #ccc;
 }

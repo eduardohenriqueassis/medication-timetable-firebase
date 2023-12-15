@@ -46,3 +46,19 @@
 .icon:hover {
   cursor: pointer;
 }
+
+.disabledInput input {
+  border-color: #bbb;
+  color: #eee;
+}
+.disabledInput label {
+  color: #bbb;
+}
+
+.disabledInput input:focus,
+.disabledInput input:hover {
+  background: #eee;
+  border: 1px solid #bbb;
+  box-shadow: none;
+}
+

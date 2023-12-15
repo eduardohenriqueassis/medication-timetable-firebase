@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Calendar.module.css";
 
-const Calendar = React.forwardRef(({ label, name, value, onChange, error, onBlur }) => {
+const Calendar = ({ label, name, value, onChange, error, onBlur }) => {
   return (
     <div className={styles.inputWrapper}>
       <label className={styles.label} htmlFor={name}>
@@ -18,6 +18,6 @@ const Calendar = React.forwardRef(({ label, name, value, onChange, error, onBlur
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-});
+};
 
 export default Calendar;

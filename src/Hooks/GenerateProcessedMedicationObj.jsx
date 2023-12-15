@@ -16,6 +16,7 @@ const generateProcessedMedicationObj = ({
   }
 
   function calculateEnd(calendar, amountOfDays) {
+    if(amountOfDays.value === '0') return 'Uso contínuo';
     const date = new Date(calendar.value);
     date.setDate(date.getDate() + Number(amountOfDays.value));
     const year = date.getFullYear();

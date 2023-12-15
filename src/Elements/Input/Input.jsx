@@ -17,6 +17,8 @@ const Input = React.forwardRef(({
   showPasswordIcon,
   onClick,
   onSelect,
+  ariaLabel,
+  disabled
 }, ref) => {
   const [passwordIcon, setPasswordIcon] = React.useState("show Password");
   const [icon, setIcon] = React.useState(true);
@@ -26,7 +28,7 @@ const Input = React.forwardRef(({
     setInputType(inputType === "text" ? "password" : "text");
   }
   return (
-    <div className={styles.inputWrapper}>
+    <div className={`${styles.inputWrapper} ${disabled ? styles.disabledInput : ''}`}>
       <label className={styles.label} htmlFor={name}>
         {label}
       </label>
@@ -43,6 +45,8 @@ const Input = React.forwardRef(({
         onClick={onClick}
         onSelect={onSelect}
         ref={ref}
+        aria-label={ariaLabel}
+        disabled={disabled}
       />
       {error && <p className={styles.error}>{error}</p>}
       {showPasswordIcon && (
