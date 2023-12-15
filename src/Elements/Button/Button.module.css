@@ -18,8 +18,8 @@
 
 .button:hover {
   background: var(--hover-blue);
-  color: #eee;
-  box-shadow: 0 0 0 3px #bbb;
+  color: var(--gray-five);
+  box-shadow: 0 0 0 3px var(--gray-two);
 }
 .disabled {
   background: var(--gray-blue);

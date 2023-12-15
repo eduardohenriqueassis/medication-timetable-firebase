@@ -75,7 +75,9 @@ const AddEditMedication = () => {
     if (checked) {
       amountOfDays.fillFields("0");
       amountOfDays.setError(null);
-    } else amountOfDays.fillFields("");
+    } else {
+      amountOfDays.value === "0" ? amountOfDays.fillFields("") : null;
+    }
   }, [checked]);
 
   function handleSubmit(e) {
