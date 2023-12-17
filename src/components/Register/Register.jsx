@@ -22,6 +22,7 @@ const Register = () => {
   const { createUser, error: authError, loading } = useAuthentication();
 
   async function handleSubmit(e) {
+    e.preventDefault();
     if (
       displayName.value.length === 0 ||
       email.value.length === 0 ||
@@ -29,7 +30,6 @@ const Register = () => {
       confirmPassword.value.length === 0
     )
       return;
-    e.preventDefault();
     if (
       displayName.value.length === 0 ||
       email.value.length === 0 ||
@@ -62,17 +62,20 @@ const Register = () => {
   }, [authError]);
 
   function callOnBlur(e) {
-    if (e.currentTarget.placeholder === 'Nome do Usuário'){
+    if (e.currentTarget.placeholder === "Nome do Usuário") {
       displayName.onBlur(e);
-      if(displayName.value.length > 0 && displayName.error === null) emailRef.current.focus();
+      if (displayName.value.length > 0 && displayName.error === null)
+        emailRef.current.focus();
     }
-    if(e.currentTarget.placeholder === "E-mail do Usuário"){
+    if (e.currentTarget.placeholder === "E-mail do Usuário") {
       email.onBlur(e);
-      if(email.value.length > 0 && email.error === null) passwordRef.current.focus();
+      if (email.value.length > 0 && email.error === null)
+        passwordRef.current.focus();
     }
-    if(e.currentTarget.placeholder === "Crie sua senha"){
+    if (e.currentTarget.placeholder === "Crie sua senha") {
       password.onBlur(e);
-      if(password.value.length> 0 && password.error === null) confirmPasswordRef.current.focus();
+      if (password.value.length > 0 && password.error === null)
+        confirmPasswordRef.current.focus();
     }
   }
 
@@ -90,7 +93,7 @@ const Register = () => {
           ref={nameRef}
           {...displayName}
           onBlur={(e) => callOnBlur(e)}
-          />
+        />
         <Input
           label="Email:"
           type="email"
@@ -99,7 +102,7 @@ const Register = () => {
           ref={emailRef}
           {...email}
           onBlur={(e) => callOnBlur(e)}
-          />
+        />
         <Input
           label="Senha:"
           type="password"

@@ -46,13 +46,8 @@
 }
 .medId p {
   color: var(--hover-blue);
-<<<<<<< HEAD
   /* background:  var(--gray-ddd);
   border: 1px solid #ccc;
-=======
-  /* background: var(--gray-four);
-  border: 1px solid var(--gray-three);
->>>>>>> 29b835e5349a1ae9124839a22cd0fbdefbdd3892
   border-radius: 0.4rem;
   padding: 0.3rem 1rem; */
 }
@@ -179,11 +174,7 @@
   height: 1.2rem;
   margin-right: 0.6rem;
   border-radius: 0.3rem;
-<<<<<<< HEAD
   background: var(--gray-eee);
-=======
-  background: var(--gray-five);
->>>>>>> 29b835e5349a1ae9124839a22cd0fbdefbdd3892
 }
 
 .checkbox:hover,
@@ -249,8 +240,4 @@
   .hoursSpaceWrapper {
     margin-top: 0.5rem;
   }
-}
-
-.disabledInput {
-  border: 1px solid var(--gray-three);
 }

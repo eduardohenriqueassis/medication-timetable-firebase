@@ -86,11 +86,10 @@
 
 .active {
   border-bottom: 3px solid var(--active-border);
-  /* border-radius: 0.3rem; */
   font-weight: bold;
   animation: opacity forwards 0.3s;
-  /* background-color: var(--active-background) !important; */
   background-color: transparent !important;
+  padding: 1.2rem 0.5rem 1.2rem 0.5rem;
 }
 
 .under {
@@ -106,11 +105,9 @@
 @keyframes opacity {
   from {
     background: var(--gray-eee);
-    padding: 1.2rem 0.5rem 0rem 0.5rem;
   }
   to {
     background: var(--gray-ddd);
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
   }
 }
 

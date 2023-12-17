@@ -45,6 +45,8 @@ html {
   --input-background: #eee;
   --input-focus-background: #fff;
   --input-focus-border: #004374;
+  --input-disabled-border: #bbb;
+  --input-disabled-text-color: #eee;
 
   /* BTNS -------- */
   --btn-background: #1468a5;
@@ -107,6 +109,8 @@ html {
   --input-border: ;
   --input-background: #0c244152;
   --input-focus-background: #38669e52;
+  --input-disabled-border: ;
+  --input-disabled-text-color: ;
 
   // BTNs --------------------
   --btn-background: #0099ff;
