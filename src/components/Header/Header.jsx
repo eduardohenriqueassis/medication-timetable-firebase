@@ -75,6 +75,9 @@ const Header = () => {
           </div>
         )}
         <div className={styles.right}>
+          <button className={styles.mode} onClick={toggleTheme}>
+            {!isDarkMode ? "E" : "C"}
+          </button>
           {navigationRoutes.map((item) => (
             <NavLink
               key={item.name}
@@ -93,9 +96,6 @@ const Header = () => {
               Sair
             </button>
           )}
-          <button className={styles.mode} onClick={toggleTheme}>
-            {!isDarkMode ? "Escuro" : "Claro"}
-          </button>
         </div>
       </nav>
     </header>

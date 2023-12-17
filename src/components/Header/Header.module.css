@@ -50,6 +50,7 @@
 .right {
   position: relative;
   display: flex;
+  align-items: center;
 }
 .logout {
   background: linear-gradient(
@@ -128,17 +129,17 @@
 }
 
 .mode {
-  /* position: absolute; */
-  margin-left: 1rem;
+  position: relative;
+  margin-right: 2rem;
   outline: none;
   border: none;
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
   right: 0;
   outline: none;
-  /* border: 1px solid var(--gray-ccc); */
   color: var(--input-border);
+  top: -5px;
   background: var(--gradient-180);
   transition: 0.6s;
 }
