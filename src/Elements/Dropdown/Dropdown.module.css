@@ -8,20 +8,20 @@
   font-size: 1rem;
   padding: 0.4rem;
   border: var(--main-blue) 1px solid;
-  background: #eee;
+  background: var(--input-background);
 }
 
 .select option::selection {
-  background: var(--main-blue);
-  color: white;
+  /* background: var(--main-blue); */
+  /* color: white; */
 }
 
 .select:focus,
 .select:hover {
   outline: none;
-  border-color: var(--hover-blue);
+  border-color: var(--input-border);
   background: white;
-  box-shadow: 0 0 0 2px var(--main-blue);
+  box-shadow: 0 0 0 2px var(--input-focus-border);
 }
 
 .label {
@@ -31,7 +31,7 @@
   top: -2px;
 }
 .error {
-  color: #f31;
+  color: var(--text-error);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }

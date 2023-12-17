@@ -46,7 +46,7 @@
 }
 .medId p {
   color: var(--hover-blue);
-  /* background: #ddd;
+  /* background:  var(--gray-ddd);
   border: 1px solid #ccc;
   border-radius: 0.4rem;
   padding: 0.3rem 1rem; */
@@ -173,7 +173,7 @@
   height: 1.2rem;
   margin-right: 0.6rem;
   border-radius: 0.3rem;
-  background: #eee;
+  background: var(--gray-eee);
 }
 
 .checkbox:hover,

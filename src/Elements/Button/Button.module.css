@@ -4,7 +4,7 @@
   cursor: pointer;
   border: none;
   border-radius: 0.4rem;
-  background: var(--main-blue);
+  background: var(--btn-background);
   color: white;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -17,11 +17,11 @@
 }
 
 .button:hover {
-  background: var(--hover-blue);
-  color: #eee;
-  box-shadow: 0 0 0 3px #bbb;
+  background: var(--btn-background-hover);
+  color: var(--btn-text-hover);
+  box-shadow: 0 0 0 3px var(--gray-bbb);
 }
 .disabled {
-  background: var(--gray-blue);
+  background: var(--btn-disabled);
   cursor: not-allowed;
 }

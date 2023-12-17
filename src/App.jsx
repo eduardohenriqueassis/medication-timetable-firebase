@@ -13,6 +13,7 @@ import { useAuthentication } from "./Hooks/useAuthentication";
 import Table from "./components/Table/Table";
 import AddEditMedication from "./components/AddMedication/AddEditMedication";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App = () => {
   const [user, setUser] = React.useState(undefined);
@@ -33,47 +34,40 @@ const App = () => {
       <AuthProvider value={{ user }}>
         <SuccessProvider>
           <BrowserRouter>
-            <Header />
-            <main className="appBody">
-              <Routes>
-                <Route
-                  path="/medication-timetable-firebase"
-                  element={<Home />}
-                />
-                <Route
-                  path="/login"
-                  element={
-                    !user ? (
-                      <Login />
-                    ) : (
-                      <Navigate to="/medication-timetable-firebase" />
-                    )
-                  }
-                />
-                <Route
-                  path="/register"
-                  element={
-                    !user ? (
-                      <Register />
-                    ) : (
-                      <Navigate to="/medication-timetable-firebase" />
-                    )
-                  }
-                />
-                <Route
-                  path="/table"
-                  element={user ? <Table /> : <Navigate to="/login " />}
-                />
-                <Route
-                  path="/add-edit"
-                  element={
-                    user ? <AddEditMedication /> : <Navigate to="/login" />
-                  }
-                />
-                <Route path="/resetPassword" element={<ResetPassword />} />
-              </Routes>
-            </main>
-            <Footer />
+            <ThemeProvider>
+              <Header />
+              <main className="appBody">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route
+                    path="/login"
+                    element={!user ? <Login /> : <Navigate to="/" />}
+                  />
+                  <Route
+                    path="/register"
+                    element={
+                      !user ? (
+                        <Register />
+                      ) : (
+                        <Navigate to="/medication-timetable-firebase" />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/table"
+                    element={user ? <Table /> : <Navigate to="/login " />}
+                  />
+                  <Route
+                    path="/add-edit"
+                    element={
+                      user ? <AddEditMedication /> : <Navigate to="/login" />
+                    }
+                  />
+                  <Route path="/resetPassword" element={<ResetPassword />} />
+                </Routes>
+              </main>
+              <Footer />
+            </ThemeProvider>
           </BrowserRouter>
         </SuccessProvider>
       </AuthProvider>
