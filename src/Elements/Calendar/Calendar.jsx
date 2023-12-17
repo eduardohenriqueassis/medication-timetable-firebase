@@ -11,6 +11,7 @@ const Calendar = ({ label, name, value, onChange, error, onBlur }) => {
         className={styles.input}
         type="date"
         id={name}
+        name={name}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

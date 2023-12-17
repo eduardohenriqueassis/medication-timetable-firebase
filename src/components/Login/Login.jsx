@@ -36,12 +36,17 @@ const Login = () => {
         <Input
           label="Email:"
           type="email"
+          name="email"
+          id="email"
           placeholder="Insira seu e-mail"
+          autoComplete="email"
           {...checkEmail}
         />
         <Input
           label="Senha:"
           type="password"
+          name="password"
+          id="password"
           placeholder="Insira sua senha"
           showPasswordIcon={true}
           {...checkPassword}

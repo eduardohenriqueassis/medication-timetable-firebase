@@ -48,6 +48,7 @@
   transition: 0.3s;
 }
 .right {
+  position: relative;
   display: flex;
 }
 .logout {
@@ -124,4 +125,26 @@
   .logout {
     font-size: 0.9rem;
   }
+}
+
+.mode {
+  /* position: absolute; */
+  margin-left: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  right: 0;
+  outline: none;
+  /* border: 1px solid var(--gray-ccc); */
+  color: var(--input-border);
+  background: var(--gradient-180);
+  transition: 0.6s;
+}
+.mode:focus,
+.mode:hover {
+  border-radius: 50%;
+  outline: none;
+  background: var(--gradient-360);
 }

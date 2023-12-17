@@ -10,7 +10,11 @@ export const ThemeProvider = ({ children }) => {
     setIsDarkMode(true);
   }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.target.blur();
+    }
     setIsDarkMode((prevMode) => !prevMode);
     updateCssVariables(isDarkMode);
   };

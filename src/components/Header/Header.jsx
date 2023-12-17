@@ -12,7 +12,10 @@ const Header = () => {
   const { logout } = useAuthentication();
   const util = Utils();
   const { isDarkMode, toggleTheme } = useTheme();
-  console.log("isDarkMode:", isDarkMode);
+  console.log(isDarkMode);
+  React.useEffect(() => {
+    toggleTheme();
+  }, []);
   const navigationRoutes = [
     {
       name: "home",
@@ -63,9 +66,6 @@ const Header = () => {
           <NavLink className={styles.link} to="/">
             <div className={styles.logo}></div>
           </NavLink>
-          <button onClick={toggleTheme}>
-            {!isDarkMode ? "Black" : "light"}
-          </button>
         </div>
         {user && user.displayName && (
           <div className={styles.welcome}>
@@ -93,6 +93,9 @@ const Header = () => {
               Sair
             </button>
           )}
+          <button className={styles.mode} onClick={toggleTheme}>
+            {!isDarkMode ? "Escuro" : "Claro"}
+          </button>
         </div>
       </nav>
     </header>
