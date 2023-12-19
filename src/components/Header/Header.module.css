@@ -44,7 +44,7 @@
   background: var(--hover-green);
 }
 .welcome {
-  color: var(--main-blue);
+  color: var(--link);
   transition: 0.3s;
 }
 .right {
@@ -53,16 +53,10 @@
   align-items: center;
 }
 .logout {
-  background: linear-gradient(
-    180deg,
-    rgba(238, 238, 238, 1) 0%,
-    rgba(238, 238, 238, 1) 32%,
-    rgba(221, 221, 221, 1) 98%,
-    rgba(238, 238, 238, 1) 100%
-  );
+  background: var(--gradient-360);
   border: 1px solid transparent;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  color: var(--main-blue);
+  color: var(--link);
   border-left: 1px solid var(--gray-eee);
   margin-left: 0.6rem;
   padding: 1.2rem 0.5rem 1.2rem 0.5rem;
@@ -72,7 +66,7 @@
 }
 .logout:hover {
   background: var(--gray-ddd);
-  color: #777;
+  color: var(--gray-777);
 }
 
 .right a:nth-child(even) {
@@ -80,7 +74,7 @@
 }
 
 .link {
-  color: var(--main-blue);
+  color: var(--link);
   padding: 1.2rem 0.5rem 1.2rem 0.5rem;
   transition: 0.2s;
   height: 4rem;
@@ -139,13 +133,25 @@
   right: 0;
   outline: none;
   color: var(--input-border);
-  top: -5px;
   background: var(--gradient-180);
-  transition: 0.6s;
+  transition: 0.3s;
 }
 .mode:focus,
 .mode:hover {
   border-radius: 50%;
   outline: none;
-  background: var(--gradient-360);
+  cursor: pointer;
+}
+.dark {
+  background: url('./../../assets/dark.svg') no-repeat;
+  
+}
+.dark:hover{
+  background-color: rgba(255,140,0, 0.4);
+}
+.light {
+  background: url('./../../assets/light.svg') no-repeat;
+}
+.light:hover {
+  background-color: rgba(255,140,0, 0.2);
 }

@@ -29,14 +29,14 @@ html {
 
   /* LINK & TEXT  */
   --text-color: #001423;
-  --link: #004374;
+  --link: #1468a5;
   --active-background: ;
   --active-border: #1468a5;
   --text-error: #f31;
 
   /* LOGO & CONTRAST */
   --logo: #1468a5;
-  --hover-green: #1c965d;
+  --hover-green: #70e9b0;
 
   /* INPUTS ----------- */
   --input-txt: #777;

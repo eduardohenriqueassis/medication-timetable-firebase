@@ -14,8 +14,8 @@ const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme();
   console.log(isDarkMode);
   React.useEffect(() => {
-    toggleTheme();
-  }, []);
+    toggleTheme()
+  }, [])
   const navigationRoutes = [
     {
       name: "home",
@@ -75,8 +75,8 @@ const Header = () => {
           </div>
         )}
         <div className={styles.right}>
-          <button className={styles.mode} onClick={toggleTheme}>
-            {!isDarkMode ? "E" : "C"}
+          <button className={`${styles.mode} ${!isDarkMode ? styles.dark : styles.light}`} onClick={toggleTheme}>
+           
           </button>
           {navigationRoutes.map((item) => (
             <NavLink
