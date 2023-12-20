@@ -23,6 +23,8 @@ export const ThemeProvider = ({ children }) => {
     const root = document.documentElement;
     if (darkMode) {
       root.style.setProperty("--body-background", "#00070f");
+      root.style.setProperty("--a-hover", "#ff8c00");
+      root.style.setProperty("--active-text-color", "#ff8c00");
       root.style.setProperty("--gray-bbb", "#bbb");
       root.style.setProperty("--gray-ccc", "#ccc");
       root.style.setProperty("--gray-ddd", "#00070f");
@@ -59,7 +61,10 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--btn-background-hover", "#004374");
       root.style.setProperty("--btn-disabled", "#bbb");
 
-      // table - row
+      // table
+      root.style.setProperty("--table-head-background", "#00070f");
+      root.style.setProperty("--table-border", "#0066aa");
+
       root.style.setProperty("--row-even", "#6a7d88");
 
       root.style.setProperty(
@@ -72,6 +77,8 @@ export const ThemeProvider = ({ children }) => {
       );
     } else {
       root.style.setProperty("--body-background", "#fff");
+      root.style.setProperty("--a-hover", "#1c965d");
+      root.style.setProperty("--active-text-color", "#1468a5");
       root.style.setProperty("--gray-bbb", "#bbb");
       root.style.setProperty("--gray-ccc", "#ccc");
       root.style.setProperty("--gray-ddd", "#ddd");
@@ -107,7 +114,9 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--btn-text-hover", "#eee");
       root.style.setProperty("--btn-background-hover", "#004374");
       root.style.setProperty("--btn-disabled", "#bbb");
-      // row - table
+      // table
+      root.style.setProperty("--table-head-background", "#1468a5");
+      root.style.setProperty("--table-border", "#1468a5");
       root.style.setProperty("--row-even", "#fff");
       root.style.setProperty(
         "--gradient-180",

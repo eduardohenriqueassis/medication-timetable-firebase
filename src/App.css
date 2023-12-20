@@ -19,7 +19,7 @@ html {
   --gray-777: #777;
 
   /* BLUE SCALE */
-  --gray-blue: #4a6070;
+  --gray-blue: #c7d6e0;
   --dark-blue: #001f36;
   --main-blue: #1468a5;
   --hover-blue: #004374;
@@ -180,7 +180,7 @@ a {
   transition: 0.2s;
 }
 a:hover {
-  color: var(--hover-green);
+  color: var(--a-hover);
 }
 .container {
   max-width: 90vw;
