@@ -1,33 +1,41 @@
 .inputWrapper {
-    width: 100%;
-    margin-bottom: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .input {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 0.4rem;
-    border: var(--main-blue) 1px solid;
-    background: #eee;
-    height: 3rem;
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  border: var(--input-border) 1px solid;
+  background: var(--input-background);
+  color: var(--input-txt);
+  height: 3rem;
 }
-
-.input:focus, .input:hover {
-    outline: none;
-    border-color: var(--hover-blue);
-    background: white;
-    box-shadow: 0 0 0 2px var(--main-blue);
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(90%);
+}
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: var(--input-border);
+  background: var(--input-background);
+  color: var(--input-text-focus);
+  box-shadow: 0 0 0 2px var(--input-focus-border);
 }
 
 .label {
-    display: block;
-    position: relative;
-    font-weight: bold;
-    top: -2px;
+  display: block;
+  position: relative;
+  font-weight: bold;
+  top: -2px;
 }
 .error {
-    color: #f31;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
+  color: var(--text-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }

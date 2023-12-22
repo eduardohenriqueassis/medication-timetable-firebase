@@ -7,21 +7,23 @@
   border-radius: 0.4rem;
   font-size: 1rem;
   padding: 0.4rem;
-  border: var(--main-blue) 1px solid;
-  background: #eee;
+  border: var(--input-border) 1px solid;
+  background: var(--input-background);
+  color: var(--input-txt);
 }
 
 .select option::selection {
-  background: var(--main-blue);
-  color: white;
+  /* background: var(--main-blue); */
+  /* color: white; */
 }
 
 .select:focus,
 .select:hover {
   outline: none;
-  border-color: var(--hover-blue);
-  background: white;
-  box-shadow: 0 0 0 2px var(--main-blue);
+  border-color: var(--input-border);
+  background: var(--input-focus-background);
+  box-shadow: 0 0 0 2px var(--input-focus-border);
+  color: var(--input-text-focus);
 }
 
 .label {
@@ -31,7 +33,7 @@
   top: -2px;
 }
 .error {
-  color: #f31;
+  color: var(--text-error);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }

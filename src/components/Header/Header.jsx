@@ -4,12 +4,18 @@ import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../../Hooks/useAuthentication";
 import { useAuthValue } from "../../context/AuthContext";
 import { Utils } from "../../Util/util";
+import { useTheme } from "../../context/ThemeContext";
 
 const Header = () => {
   const [greeting, setGreeting] = React.useState("");
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
   const util = Utils();
+  const { isDarkMode, toggleTheme } = useTheme();
+  console.log(isDarkMode);
+  React.useEffect(() => {
+    toggleTheme()
+  }, [])
   const navigationRoutes = [
     {
       name: "home",
@@ -69,6 +75,9 @@ const Header = () => {
           </div>
         )}
         <div className={styles.right}>
+          <button className={`${styles.mode} ${!isDarkMode ? styles.dark : styles.light}`} onClick={toggleTheme}>
+           
+          </button>
           {navigationRoutes.map((item) => (
             <NavLink
               key={item.name}

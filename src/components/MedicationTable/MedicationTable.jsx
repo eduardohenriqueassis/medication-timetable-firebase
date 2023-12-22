@@ -3,19 +3,30 @@ import TableHead from "../TableHead/TableHead";
 import styles from "./MedicationTable.module.css";
 import { useDeleteMedication } from "../../Hooks/useDeleteMedication";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 import Edit from "./../../assets/edit.png";
+import EditDark from "./../../assets/edit-dark.png";
 import Delete from "./../../assets/delete.png";
+import DeleteDark from "./../../assets/delete-dark.png";
 
 
 const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
   const { deleteMedication } = useDeleteMedication("medications");
   const navigate = useNavigate();
+  const [dark, setDark] = React.useState(false);
+  const { isDarkMode } = useTheme();
 
   React.useEffect(() => {
     if (data) composeArrayRows();
-  }, [data]);
+    isDarkMode ? setDark(true) : setDark(false)
+  }, [data, isDarkMode]);
+
+
+  React.useEffect(() => {
+   isDarkMode ? setDark(false) : setDark(true)
+  }, []);
 
   const composeArrayRows = () => {
     let arr = [];
@@ -69,14 +80,14 @@ const MedicationTable = ({ data }) => {
                 id={`edit-${medication.uid}`}
                 onClick={() => handleEdit(medication)}
               >
-                <img src={Edit} alt="edit" />
+                {dark ? <img src={EditDark} alt="edit" /> : <img src={Edit} alt="edit" />}
               </button>
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
                 onClick={() => handleDelete(medication)}
               >
-                <img src={Delete} alt="delete" />
+                {dark ? <img src={DeleteDark} alt="delete" /> : <img src={Delete} alt="delete" />}
               </button>
             </div>
           </li>
