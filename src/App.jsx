@@ -38,10 +38,10 @@ const App = () => {
               <Header />
               <main className="appBody">
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/medication-timetable-firebase" element={<Home />} />
                   <Route
                     path="/login"
-                    element={!user ? <Login /> : <Navigate to="/" />}
+                    element={!user ? <Login /> : <Navigate to="/medication-timetable-firebase" />}
                   />
                   <Route
                     path="/register"
