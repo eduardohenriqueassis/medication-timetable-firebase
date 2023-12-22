@@ -13,10 +13,11 @@
   color: var(--input-txt);
   height: 3rem;
 }
+
 .input::placeholder {
   color: var(--input-placeholder);
 }
-.input::-webkit-calendar-picker-indicator {
+.dark.input::-webkit-calendar-picker-indicator {
   filter: invert(90%);
 }
 .input:focus,

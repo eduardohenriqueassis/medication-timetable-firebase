@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Calendar.module.css";
 
-const Calendar = ({ label, name, value, onChange, error, onBlur }) => {
+const Calendar = ({ label, name, value, onChange, error, onBlur, dark }) => {
   return (
     <div className={styles.inputWrapper}>
       <label className={styles.label} htmlFor={name}>
         {label}
       </label>
       <input
-        className={styles.input}
+        className={`${dark ? styles.dark : ''} ${styles.input}`}
         type="date"
         id={name}
         name={name}

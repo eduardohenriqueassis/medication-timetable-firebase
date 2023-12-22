@@ -217,10 +217,11 @@ const AddEditMedication = () => {
           <div className={styles.startDaysAmountWrapper}>
             <div className={styles.dateWrapper}>
               <Calendar
-                className={styles.inputDate}
+                className={`${dark ? styles.calendarDark : ''} ${styles.inputDate}`}
                 label="Início *"
                 name="start"
                 type="date"
+                dark={!dark ? true : false}
                 {...calendar}
               />
             </div>
