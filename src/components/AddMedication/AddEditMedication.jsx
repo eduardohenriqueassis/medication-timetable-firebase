@@ -258,8 +258,7 @@ const AddEditMedication = () => {
                   ></div>
                 )}
               </div>
-              <p>Uso contínuo?</p>
-            </div>
+            }
           </div>
         </div>
         <div className={styles.hoursSpaceWrapper}>
