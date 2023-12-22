@@ -121,11 +121,11 @@ export const Utils = (fieldType) => {
     var formattedHour = Number((hours < 10 ? "0" : "") + hours);
 
     let period = "";
-    if (formattedHour > 6 && formattedHour <= 12) {
+    if (formattedHour > 5 && formattedHour <= 12) {
       period = "bom dia";
     } else if (formattedHour > 12 && formattedHour <= 18) {
       period = "boa tarde";
-    } else if (formattedHour > 0 && formattedHour <= 6) {
+    } else if (formattedHour > 0 && formattedHour <= 5) {
       period = "boa madrugada";
     } else {
       period = "boa noite";

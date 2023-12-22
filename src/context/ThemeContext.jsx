@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--gray-bbb", "#bbb");
       root.style.setProperty("--gray-ccc", "#38474e");
       root.style.setProperty("--gray-ddd", "#8299a1");
-      root.style.setProperty("--gray-eee", "#536870");
+      root.style.setProperty("--gray-eee", "#152733");
       root.style.setProperty("--gray-333", "#333");
       root.style.setProperty("--gray-777", "#e5eef3");
       root.style.setProperty("--gray-blue", "#4a6070");
@@ -64,8 +64,7 @@ export const ThemeProvider = ({ children }) => {
       // table
       root.style.setProperty("--table-head-background", "#00070f");
       root.style.setProperty("--table-border", "#0066aa");
-
-      root.style.setProperty("--row-even", "#6a7d88");
+      root.style.setProperty("--row-even", "#1d3241");
 
       root.style.setProperty(
         "--gradient-180",
