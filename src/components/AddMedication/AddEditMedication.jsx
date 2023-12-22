@@ -10,7 +10,9 @@ import generateProcessedMedicationObj from "../../Hooks/generateProcessedMedicat
 import { useInsertMedication } from "../../Hooks/useInsertMedication";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUpdateMedication } from "../../Hooks/useUpdateMedication";
+import { useTheme } from "../../context/ThemeContext";
 import Checked from "../../assets/checkbox-checked.png";
+import CheckedDark from "../../assets/checkbox-checked-dark.png";
 
 const AddEditMedication = () => {
   const [hoursArrList, setHoursArrList] = React.useState([]);
@@ -20,6 +22,8 @@ const AddEditMedication = () => {
   const [isCreate, setIsCreate] = React.useState(true);
   const { insertMedication, response } = useInsertMedication("medications");
   const { user } = useAuthValue();
+  const [dark, setDark] = React.useState(false);
+  const { isDarkMode } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const { updateMedication, response: updateResponse } =
@@ -43,6 +47,11 @@ const AddEditMedication = () => {
       fillFieldsToEdit(medicationData);
     } else setIsCreate(true);
   }, []);
+
+  React.useEffect(() => {
+    isDarkMode ? setDark(true) : setDark(false)
+  }, [isDarkMode]);
+
 
   function fillFieldsToEdit(data) {
     setMedId(data.medication.id);
@@ -238,7 +247,7 @@ const AddEditMedication = () => {
               <div className={styles.btnCheckbox} onClick={toggleCheckbox}>
                 {checked ? (
                   <img
-                    src={Checked}
+                    src={dark ? Checked : CheckedDark}
                     alt="checked"
                     aria-label="Uso contínuo? marcado"
                   />

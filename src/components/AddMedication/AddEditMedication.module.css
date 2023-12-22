@@ -17,10 +17,10 @@
 
 .form {
   width: 100%;
-  border: 1px solid var(--main-blue);
+  border: 1px solid var(--input-border);
   border-radius: 0.4rem;
   padding: 2rem 1rem 1rem;
-  box-shadow: 3px 3px 5px var(--gray-three);
+  box-shadow: 3px 3px 5px var(--input-focus-border);
   box-sizing: border-box;
   background: var(--super-light-blue);
 }
@@ -157,6 +157,10 @@
   /* border: 1px solid red; */
 }
 
+.checkboxWrapper p {
+  color: var(--input-txt) !important;
+}
+
 @media (max-width: 700px) {
   .checkboxWrapper {
     left: 0;
@@ -174,14 +178,14 @@
   height: 1.2rem;
   margin-right: 0.6rem;
   border-radius: 0.3rem;
-  background: var(--gray-eee);
+  background: var(--input-background);
 }
 
 .checkbox:hover,
 .checkboxWrapper img:hover {
   outline: none;
   border-color: var(--hover-blue);
-  background: white;
+  background: var(--input-focus-background);
   box-shadow: 0 0 0 2px var(--main-blue);
 }
 .checkboxWrapper p {

@@ -5,4 +5,5 @@
   align-items: center;
   justify-content: center;
   background: var(--gradient-360);
+  box-shadow: inset 0px 2px 5px var(--gray-ddd);
 }

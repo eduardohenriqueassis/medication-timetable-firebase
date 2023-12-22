@@ -26,8 +26,8 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--a-hover", "#ff8c00");
       root.style.setProperty("--active-text-color", "#ff8c00");
       root.style.setProperty("--gray-bbb", "#bbb");
-      root.style.setProperty("--gray-ccc", "#ccc");
-      root.style.setProperty("--gray-ddd", "#00070f");
+      root.style.setProperty("--gray-ccc", "#38474e");
+      root.style.setProperty("--gray-ddd", "#8299a1");
       root.style.setProperty("--gray-eee", "#536870");
       root.style.setProperty("--gray-333", "#333");
       root.style.setProperty("--gray-777", "#e5eef3");
@@ -38,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--hover-blue", "#004374");
       root.style.setProperty("--middle-blue", "#001423");
       root.style.setProperty("--light-blue", "#e9f1f5");
-      root.style.setProperty("--super-light-blue", "#f0f7fc");
+      root.style.setProperty("--super-light-blue", "#00101d");
       root.style.setProperty("--text-color", "#eee");
       root.style.setProperty("--link", "#b3c4cf");
       root.style.setProperty("--active-border", "#ff8c00");
@@ -53,8 +53,8 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--input-background", "#00070f");
       root.style.setProperty("--input-focus-background", "#004a80");
       root.style.setProperty("--input-focus-border", "#eee");
-      root.style.setProperty("--input-disabled-border", "#bbb");
-      root.style.setProperty("--input-disabled-text-color", "#eee");
+      root.style.setProperty("--input-disabled-border", "#38474e");
+      root.style.setProperty("--input-disabled-text-color", "#00070f");
       // btn -------------
       root.style.setProperty("--btn-background", "#1468a5");
       root.style.setProperty("--btn-text-hover", "#eee");

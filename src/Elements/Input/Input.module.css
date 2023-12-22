@@ -23,8 +23,8 @@
   outline: none;
   border-color: var(--input-border);
   background: var(--input-focus-background);
-  box-shadow: 0 0 0 2px var(--input-focus-border);
   color: var(--input-text-focus);
+  box-shadow: 0 0 0 2px var(--input-focus-border);
 }
 
 .label {
@@ -62,7 +62,8 @@
 
 .disabledInput input:focus,
 .disabledInput input:hover {
-  background: var(--gray-eee);
+  background: var(--input-background);
   border: 1px solid var(--input-disabled-border);
+  color: var(--input-background);
   box-shadow: none;
 }
