@@ -19,7 +19,7 @@ const Header = () => {
   const navigationRoutes = [
     {
       name: "home",
-      route: "/",
+      route: "/medication-timetable-firebase",
       linkName: "Home",
       isHidden: false,
     },
