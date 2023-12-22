@@ -15,6 +15,7 @@ const Calendar = ({ label, name, value, onChange, error, onBlur, dark }) => {
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        onKeyDown={() => {return false}}
       ></input>
       {error && <p className={styles.error}>{error}</p>}
     </div>
