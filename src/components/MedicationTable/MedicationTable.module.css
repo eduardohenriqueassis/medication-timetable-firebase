@@ -201,7 +201,7 @@ button:focus {
   }
 
   .row:nth-child(odd) {
-    background: initial;
+    background: var(--row-even);
   }
   .row:nth-child(even) {
     border: 1px solid var(--main-blue);
@@ -236,7 +236,7 @@ button:focus {
     grid-column-start: 1;
     grid-column-end: 3;
     border-radius: 0 0 0.4rem 0;
-    background: white;
+    background: var(--body-background) !important;
   }
   .liHours {
     width: 100%;
@@ -247,7 +247,7 @@ button:focus {
   }
   .lastCell {
     border-radius: 0 0 0.4rem 0.4rem;
-    background: white !important;
+    background: var(--body-background) !important;
   }
   .noData {
     border: 1px solid var(--main-blue);
