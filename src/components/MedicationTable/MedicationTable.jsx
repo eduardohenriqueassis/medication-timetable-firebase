@@ -73,7 +73,7 @@ const MedicationTable = ({ data }) => {
               ))}
             </ul>
           </li>
-          <li className={`${styles.cell} ${styles.lastCell} ${styles.column1}`}>
+          <li className={`${styles.cell} ${styles.column1} ${styles.lastCell} `}>
             <div className={styles.iconsWrapper}>
               <button
                 className={`${styles.edit} ${styles.btn}`}

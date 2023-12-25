@@ -197,6 +197,24 @@
   width: 1.3rem;
   height: 1.3rem;
 }
+.otherButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  width: 100%;
+}
+.otherButtons button {
+  width: 48%;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: #eee;
+  transition: .2s;
+}
+.otherButtons button:hover, button:focus {
+  box-shadow: 0 0 0 4px var(--main-blue);
+  cursor: pointer;
+}
 
 @media (max-width: 660px) {
   .medicationIndicationWrapper {

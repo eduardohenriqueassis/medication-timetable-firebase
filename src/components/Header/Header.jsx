@@ -12,7 +12,6 @@ const Header = () => {
   const { logout } = useAuthentication();
   const util = Utils();
   const { isDarkMode, toggleTheme } = useTheme();
-  console.log(isDarkMode);
   React.useEffect(() => {
     toggleTheme()
   }, [])
