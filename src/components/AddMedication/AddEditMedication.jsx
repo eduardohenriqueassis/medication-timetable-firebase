@@ -155,6 +155,20 @@ const AddEditMedication = () => {
   function toggleCheckbox() {
     checked ? setChecked(false) : setChecked(true);
   }
+  function handleCleanForm(e){
+    e.preventDefault();
+    e.target.blur();
+    setIsCreate(true);
+    medication.fillFields('');
+    indication.fillFields('');
+    dosage.fillFields('');
+    dosageType.fillFields('');
+    amountOfDays.fillFields('');
+    space.fillFields('');
+    hours.fillFields('');
+    minutes.fillFields('');
+    calendar.fillFields('');
+  }
 
   return (
     <section className={`${styles.tabWrapper} container`}>
@@ -325,6 +339,10 @@ const AddEditMedication = () => {
         </div>
         {response.error && <p className={styles.error}>{response.error}</p>}
       </form>
+      <div className={styles.otherButtons}>
+        <button onClick={handleCleanForm}>Limpar Formulário</button>
+        <button onClick={() => navigate('/table')}>Cancelar</button>
+      </div>
     </section>
   );
 };
