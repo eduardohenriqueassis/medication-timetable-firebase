@@ -15,18 +15,12 @@ const MedicationTable = ({ data }) => {
   const [rows, setRows] = React.useState([]);
   const { deleteMedication } = useDeleteMedication("medications");
   const navigate = useNavigate();
-  const [dark, setDark] = React.useState(false);
   const { isDarkMode } = useTheme();
 
   React.useEffect(() => {
     if (data) composeArrayRows();
-    isDarkMode ? setDark(true) : setDark(false)
   }, [data, isDarkMode]);
 
-
-  React.useEffect(() => {
-   isDarkMode ? setDark(false) : setDark(true)
-  }, []);
 
   const composeArrayRows = () => {
     let arr = [];
@@ -80,14 +74,14 @@ const MedicationTable = ({ data }) => {
                 id={`edit-${medication.uid}`}
                 onClick={() => handleEdit(medication)}
               >
-                {dark ? <img src={EditDark} alt="edit" /> : <img src={Edit} alt="edit" />}
+                <img src={isDarkMode ? EditDark : Edit} alt="edit" />
               </button>
               <button
                 className={`${styles.delete} ${styles.btn}`}
                 id={`delete-${medication.uid}`}
                 onClick={() => handleDelete(medication)}
               >
-                {dark ? <img src={DeleteDark} alt="delete" /> : <img src={Delete} alt="delete" />}
+                <img src={isDarkMode ? DeleteDark : Delete} alt="delete" />
               </button>
             </div>
           </li>

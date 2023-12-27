@@ -12,9 +12,10 @@ const Header = () => {
   const { logout } = useAuthentication();
   const util = Utils();
   const { isDarkMode, toggleTheme } = useTheme();
+  const [dark, setDark] = React.useState(isDarkMode)
   React.useEffect(() => {
-    toggleTheme()
-  }, [])
+   setDark(isDarkMode)
+  }, [isDarkMode])
   const navigationRoutes = [
     {
       name: "home",
@@ -74,7 +75,7 @@ const Header = () => {
           </div>
         )}
         <div className={styles.right}>
-          <button className={`${styles.mode} ${!isDarkMode ? styles.dark : styles.light}`} onClick={toggleTheme}>
+          <button className={`${styles.mode} ${dark ? styles.dark : styles.light}`} onClick={toggleTheme}>
            
           </button>
           {navigationRoutes.map((item) => (
