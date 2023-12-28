@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 import Button from "../../Elements/Button/Button";
 import { SuccessContext } from "../../context/CreateUserSuccessContext";
+import { useAuthValue } from "../../context/AuthContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { user } = useAuthValue();
   const { createUserSuccess, toggleSuccess } = useContext(SuccessContext);
   function handleClick(event) {
     event.preventDefault();
@@ -28,17 +30,55 @@ const Home = () => {
           <strong>muito importante</strong> que você siga os horários para que
           os medicamentos funcionem corretamente.
         </p>
-        <p>
-          Jamais tome remédios por conta própria, consulte sempre o seu médico.{" "}
-          <br />
-          <strong>A auto-medicação pode ser muito perigosa.</strong>
-        </p>
-        <p style={{ marginTop: "1.5rem" }}>
-          <strong>Cadastre-se</strong> e comece a usar a sua calculadora de
-          horários.
-        </p>
+        <div className={styles.tips}>
+          <h3 style={{ marginTop: "1.5rem" }}>Dicas:</h3>
+          <ul>
+            <li>
+              verifique sempre o prazo de validade dos medicamentos antes de
+              usá-los;
+            </li>
+            <li>
+              não use medicamentos com embalagens estragadas, sem rótulo ou
+              bula;
+            </li>
+            <li>
+              não utilize a mesma receita médica mais de uma vez, pois um
+              medicamento que foi usado antigamente pode não ser o correto hoje;
+            </li>
+            <li>
+              não compre medicamentos que foram indicados por vizinhos ou
+              amigos; fale primeiro com seu médico;
+            </li>
+            <li>não misture medicamentos sem a devida orientação;</li>
+            <li>
+              se apresentar algum sintoma diferente ao tomar um medicamento,
+              procure seu médico;
+            </li>
+            <li>
+              bebês, mulheres grávidas ou que estejam amamentando não devem
+              tomar medicamentos sem orientação médica;
+            </li>
+            <li>
+              Jamais tome remédios por conta própria, consulte sempre o seu
+              médico.
+            </li>
+            <li>
+              <strong>A auto-medicação pode ser muito perigosa.</strong>
+            </li>
+          </ul>
+        </div>
+        {user ? (
+          <p style={{ marginTop: "1.5rem" }}>
+            <strong>Comece</strong> usar a sua calculadora de horários e tenha a
+            comodidade que você merece.
+          </p>
+        ) : (
+          <p style={{ marginTop: "1.5rem" }}>
+            <strong>Cadastre-se</strong> e comece a usar a sua calculadora de
+            horários.
+          </p>
+        )}
       </div>
-
       {createUserSuccess && (
         <div className={styles.successWrapper}>
           <div className={styles.success}>
@@ -46,8 +86,13 @@ const Home = () => {
           </div>
         </div>
       )}
+
       <div className={styles.btnWrapper}>
-        <Button onClick={handleClick}>Cadastrar Medicamento</Button>
+        {user ? (
+          <Button onClick={handleClick}>Cadastrar Medicamento</Button>
+        ) : (
+          <Button onClick={() => navigate("/register")}>Criar Conta</Button>
+        )}
       </div>
     </main>
   );
