@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import Button from "../../Elements/Button/Button";
 import { SuccessContext } from "../../context/CreateUserSuccessContext";
@@ -91,7 +91,12 @@ const Home = () => {
         {user ? (
           <Button onClick={handleClick}>Cadastrar Medicamento</Button>
         ) : (
-          <Button onClick={() => navigate("/register")}>Criar Conta</Button>
+          <>
+            <Button onClick={() => navigate("/register")}>Criar Conta</Button>
+            <p style={{ marginTop: "0.5rem" }}>
+              Já tem conta? <NavLink to="/login">Entrar</NavLink>
+            </p>
+          </>
         )}
       </div>
     </main>

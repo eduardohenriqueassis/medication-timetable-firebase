@@ -2,6 +2,20 @@
   margin-top: 3rem;
   width: 20rem;
 }
+.btnWrapper a {
+  position: relative;
+  color: var(--link);
+  font-weight: bold;
+}
+.btnWrapper a::after {
+  content: "";
+  display: block;
+  background: var(--link);
+  height: 2px;
+  width: 2.75rem;
+  position: absolute;
+  right: 0px;
+}
 
 h1 {
   margin-bottom: 1rem !important;
