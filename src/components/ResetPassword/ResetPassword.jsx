@@ -11,9 +11,15 @@ const Login = () => {
   const navigate = useNavigate();
   const email = Utils("email");
   const { resetPassword, error: authError, loading } = useAuthentication();
+  const resetPasswordRef = React.useRef(null);
+
+  React.useEffect(() => {
+    resetPasswordRef.current.focus();
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (email.value.length === 0) return;
 
     await resetPassword(email.value);
     setRedefineSent(true);
@@ -32,6 +38,7 @@ const Login = () => {
           label="Email:"
           type="email"
           placeholder="Insira seu e-mail"
+          ref={resetPasswordRef}
           {...email}
         />
 

@@ -12,9 +12,31 @@ const Login = () => {
   const checkEmail = Utils("email");
   const checkPassword = Utils("password");
   const { login, error: authError, loading } = useAuthentication();
+  const emailRef = React.useRef(null);
+  const passwordRef = React.useRef(null);
+
+  // React.useEffect(() => {
+  //   emailRef.current.focus();
+  // }, []);
+
+  function callOnBlur(e) {
+    e.preventDefault();
+    setError(null);
+    if (e.currentTarget.placeholder === "Insira seu e-mail") {
+      checkEmail.onBlur(e);
+      if (checkEmail.value.length > 0 && checkEmail.error === null) {
+        passwordRef.current.focus();
+      }
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (checkEmail.error || checkPassword.error) return;
+    if (checkEmail.value.length === 0 || checkPassword.value.length === 0) {
+      setError("Preencha os campos");
+      return;
+    }
     setError(null);
     const user = {
       email: checkEmail.value,
@@ -40,7 +62,10 @@ const Login = () => {
           id="email"
           placeholder="Insira seu e-mail"
           autoComplete="email"
+          ref={emailRef}
           {...checkEmail}
+          onBlur={(e) => callOnBlur(e)}
+          onSelect={() => setError(null)}
         />
         <Input
           label="Senha:"
@@ -49,7 +74,9 @@ const Login = () => {
           id="password"
           placeholder="Insira sua senha"
           showPasswordIcon={true}
+          ref={passwordRef}
           {...checkPassword}
+          onSelect={() => setError(null)}
         />
         <p>
           <NavLink className={styles.forgot} to="/resetPassword">

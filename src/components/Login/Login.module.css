@@ -12,11 +12,13 @@
 }
 .loginForm p {
   margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 .loginForm p a {
   position: relative;
   color: var(--link);
   font-weight: bold;
+  z-index: 10;
 }
 .createAccount::after,
 .forgot::after {

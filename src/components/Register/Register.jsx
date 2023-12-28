@@ -28,13 +28,6 @@ const Register = () => {
       email.value.length === 0 ||
       password.value.length === 0 ||
       confirmPassword.value.length === 0
-    )
-      return;
-    if (
-      displayName.value.length === 0 ||
-      email.value.length === 0 ||
-      password.value.length === 0 ||
-      confirmPassword.value.length === 0
     ) {
       setError("Preencha o formulário");
       return;
@@ -51,9 +44,9 @@ const Register = () => {
     localStorage.removeItem("password");
   }
 
-  React.useEffect(() => {
-    nameRef.current.focus();
-  }, []);
+  // React.useEffect(() => {
+  //   nameRef.current.focus();
+  // }, []);
 
   React.useEffect(() => {
     if (authError) {
