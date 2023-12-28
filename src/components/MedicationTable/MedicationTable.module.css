@@ -159,10 +159,14 @@ button:focus {
 .noData {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
+  text-align: center;
+  background: var(--gray-eee);
 }
 .noData p {
-  color: var(--main-blue);
+  color: var(--text-color);
+  word-wrap: break-word;
 }
 
 @keyframes s9 {
@@ -229,7 +233,7 @@ button:focus {
   .info {
     display: block;
     font-size: 1rem;
-    color: var(--main-blue);
+    color: var(--info-color);
     margin-right: 0.5rem;
   }
   .iconsWrapper {
@@ -252,7 +256,7 @@ button:focus {
   .noData {
     border: 1px solid var(--main-blue);
     border-radius: 0.4rem;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
   }
 }
 
@@ -266,3 +270,5 @@ button:focus {
     right: initial;
   }
 }
+
+

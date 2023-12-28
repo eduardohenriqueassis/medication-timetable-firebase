@@ -148,11 +148,11 @@
   
 }
 .dark:hover{
-  background-color: rgba(255,140,0, 0.4);
+  background-color: rgba(255,140,0, 0.2);
 }
 .light {
   background: url('./../../assets/light.svg') no-repeat;
 }
 .light:hover {
-  background-color: rgba(255,140,0, 0.2);
+  background-color: rgba(32, 152, 250, 0.1);
 }

@@ -7,15 +7,16 @@ export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    setIsDarkMode(true);
-  }, []);
+    updateCssVariables(isDarkMode);
+  }, [isDarkMode]);
 
   const toggleTheme = (e) => {
     if (e) {
       e.preventDefault();
       e.target.blur();
     }
-    setIsDarkMode((prevMode) => !prevMode);
+    let validator = isDarkMode ? false : true
+    setIsDarkMode(validator);
     updateCssVariables(isDarkMode);
   };
 
@@ -63,6 +64,7 @@ export const ThemeProvider = ({ children }) => {
 
       // table
       root.style.setProperty("--table-head-background", "#00070f");
+      root.style.setProperty("--info-color", "#99aeb8");
       root.style.setProperty("--table-border", "#0066aa");
       root.style.setProperty("--row-even", "#1d3241");
 
@@ -99,8 +101,8 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--logo", "#1468a5");
       root.style.setProperty("--hover-green", "#1c965d");
       // inputs --------------
-      root.style.setProperty("--input-txt", "#777");
-      root.style.setProperty("--input-text-focus", "#777");
+      root.style.setProperty("--input-txt", "#333");
+      root.style.setProperty("--input-text-focus", "#333");
       root.style.setProperty("--input-placeholder", "#777");
       root.style.setProperty("--input-border", "#1468a5");
       root.style.setProperty("--input-background", "#eee");
@@ -115,6 +117,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--btn-disabled", "#bbb");
       // table
       root.style.setProperty("--table-head-background", "#1468a5");
+      root.style.setProperty("--info-color", "#1468a5");
       root.style.setProperty("--table-border", "#1468a5");
       root.style.setProperty("--row-even", "#fff");
       root.style.setProperty(
